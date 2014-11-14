@@ -47,7 +47,6 @@
                <search string="Repostaje Maquinas">
                     <field name="machine_id"/>
                     <field name="descripcion"/>
-                    <field name="repostaje_tipo_id"/>
                     <group expand="0" string="Group By...">
                         <filter string="Maquina" 
                                 name="group_machine_id" 
