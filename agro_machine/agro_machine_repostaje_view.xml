@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	<record model="ir.ui.view" id="agro_machine_repostaje_form_view">
+            <field name="name">agro.machine.repostaje.form.view</field>
+            <field name="model">agro.machine.repostaje</field>
+            <field name="arch" type="xml">
+            	<form string="Repostaje Maquina">
+            		<group colspan="4" col="2">
+                                <field name="machine_id"/>
+                                <field name="descripcion"/>
+                                <field name="fecha"/>
+                                <field name="lectura"/>
+                                <field name="coste"/>
+                                <field name="explotacion_id"/>
+                                <field name="campana_id" domain="[('explotacion_id', '=', explotacion_id)]"/>
+                                <field name="task_id" domain="[('project_id','=',campana_id)]"/>
+                                <field name="responsable_id"/>
+                                <field name="order_id"/>
+                                <field name="observaciones"/>
+    			</group>
+                </form>
+            </field>
+         </record>                  
+
+        <record id="view_agro_machine_repostaje" model="ir.ui.view">
+            <field name="name">agro.machine.repostaje.tree</field>
+            <field name="model">agro.machine.repostaje</field>
+            <field name="arch" type="xml">
+                <tree string="Repostaje Maquinas">
+                    <field name="machine_id"/>
+                    <field name="fecha"/>
+                    <field name="coste" sum="Total coste"/>
+                    <field name="lectura"/>
+                    <field name="responsable_id"/>
+                    <field name="explotacion_id"/>
+                    <field name="campana_id"/>
+                    <field name="task_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_agro_machine_repostaje_search_form" model="ir.ui.view">
+            <field name="name">agro.machine.repostaje.search.form</field>
+            <field name="model">agro.machine.repostaje</field>
+            <field name="arch" type="xml">
+               <search string="Repostaje Maquinas">
+                    <field name="machine_id"/>
+                    <field name="descripcion"/>
+                    <field name="repostaje_tipo_id"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Maquina" 
+                                name="group_machine_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'machine_id'}"/>
+                        <filter string="Responsable" 
+                                name="group_responsable_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'responsable_id'}"/>
+                        <filter string="Explotacion" 
+                                name="group_explotacion_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'explotacion_id'}"/>
+                        <filter string="Campana" 
+                                name="group_campana_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'campana_id'}"/>
+                        <filter string="Tarea asociada" 
+                                name="group_tarea_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'task_id'}"/>
+                        </group>
+                </search>
+            </field>
+        </record>
+
+     <!-- ACCION -->
+	<record id="act_agro_machine_repostaje" model="ir.actions.act_window">
+	    <field name="name">Repostaje maquinas</field>
+	    <field name="res_model">agro.machine.repostaje</field>
+	    <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_agro_machine_repostaje_search_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new Repostaje de Maquina.
+              </p><p>
+                OpenERP's agro machine management...
+              </p>
+            </field>
+	</record>
+		
+
+	<!-- MENU -->
+	<menuitem id="menu_agro_machine_repostaje" 
+                  name="Repostaje de Maquinas"
+                  parent="menu_agro_machine_machine"
+                  action="act_agro_machine_repostaje"/>
+	</data>
+</openerp>

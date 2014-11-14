@@ -2,11 +2,12 @@ id,name,model_id:id,group_id:id,perm_create,perm_unlink,perm_write,perm_read
 access_agro_machine_machine_agro_manager,agro.machine.machine,agro_machine.model_agro_machine_machine,agro_base.group_agro_manager,1,1,1,1
 access_agro_machine_service_agro_manager,agro.machine.service,agro_machine.model_agro_machine_service,agro_base.group_agro_manager,1,1,1,1
 access_agro_machine_service_tipo_agro_manager,agro.machine.service.tipo,agro_machine.model_agro_machine_service_tipo,agro_base.group_agro_manager,1,1,1,1
+access_agro_machine_repostaje_agro_manager,agro.machine.repostaje,agro_machine.model_agro_machine_repostaje,agro_base.group_agro_manager,1,1,1,1
 access_agro_machine_tipo_agro_manager,agro.machine.tipo,agro_machine.model_agro_machine_tipo,agro_base.group_agro_manager,1,1,1,1
 access_agro_project_machine_marca_agro_manager,agro.machine.marca,agro_machine.model_agro_machine_marca,agro_base.group_agro_manager,1,1,1,1
 access_agro_machine_machine_agro_user,agro.machine.machine,agro_machine.model_agro_machine_machine,agro_base.group_agro_user,0,0,0,1
 access_agro_machine_service_agro_user,agro.machine.service,agro_machine.model_agro_machine_service,agro_base.group_agro_user,0,0,0,1
+access_agro_machine_repostaje_agro_user,agro.machine.repostaje,agro_machine.model_agro_machine_repostaje,agro_base.group_agro_user,0,0,0,1
 access_agro_machine_service_tipo_agro_user,agro.machine.service.tipo,agro_machine.model_agro_machine_service_tipo,agro_base.group_agro_user,0,0,0,1
 access_agro_machine_tipo_agro_user,agro.machine.tipo,agro_machine.model_agro_machine_tipo,agro_base.group_agro_user,0,0,0,1
 access_agro_project_machine_marca_agro_user,agro.machine.marca,agro_machine.model_agro_machine_marca,agro_base.group_agro_user,0,0,0,1
-

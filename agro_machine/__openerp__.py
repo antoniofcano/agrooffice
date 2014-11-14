@@ -40,6 +40,7 @@ Vertical Project management for a Farm company
         'security/ir.model.access.csv',
         'agro_machine_machine_view.xml',
         'agro_machine_service_view.xml',
+        'agro_machine_repostaje_view.xml',
     ],
     'installable': True,
     'auto_install': False,

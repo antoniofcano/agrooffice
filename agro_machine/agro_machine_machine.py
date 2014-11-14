@@ -86,3 +86,24 @@ class agro_machine_service_tipo(osv.osv):
         'name': fields.char('Tipo de mantenimiento', size=128, required = True),
     }
 agro_machine_service_tipo()
+
+class agro_machine_repostaje(osv.osv):
+    _name = 'agro.machine.repostaje'
+    _description = 'Repostaje'
+    _rec_name = 'machine_id'
+
+    _columns={
+        'machine_id': fields.many2one('agro.machine.machine', 'Maquina', required = True),
+        'descripcion': fields.char('Descripcion', size=128),
+        'fecha': fields.date('Fecha', required = True),
+        'lectura': fields.float('Kms/Horas/...'),
+        'coste': fields.float('Coste', required = True),
+        'explotacion_id': fields.many2one('agro.project.explotacion', 'Explotacion', required = True),
+        'campana_id': fields.many2one('project.project', 'Campana', required = True),
+        'task_id': fields.many2one('project.task', 'Tarea asociada', required = True),
+        'responsable_id': fields.many2one('res.users', 'Responsable', required = True),
+        'observaciones': fields.char('Observaciones', size=200),
+        'order_id': fields.many2one('purchase.order', 'Orden de compra'),
+    }
+agro_machine_repostaje()
+
