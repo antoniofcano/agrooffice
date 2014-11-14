@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	<record model="ir.ui.view" id="agro_project_parcela_form_view">
+            <field name="name">agro.project.parcela.form.view</field>
+            <field name="model">agro.project.parcela</field>
+            <field name="arch" type="xml">
+            	<form string="Parcela">
+            		<group colspan="4" col="2">
+                                <field name="name"/>
+                                <field name="explotacion_id"/>
+                                <field name="ref_catastral"/>
+                                <field name="superficie"/>
+                                <field name="riego"/>
+                                <field name="tipo_riego"/>
+                                <field name="cultivo_id"/>
+                                <field name="variedad_id" domain="[('cultivo_id','=',cultivo_id)]"/>
+                                <field name="num_plantas"/>
+				<notebook>
+                        		<page string="Reg. Propiedad">
+		                                <field name="prop_tomo"/>
+                		      		<field name="prop_libro"/>
+		                                <field name="prop_folio"/>
+		                                <field name="prop_inscripcion"/>
+		                                <field name="prop_fecha"/>
+					</page>
+					<page string="Sig PAC">
+		                                <field name="sigpac_prov"/>
+                		                <field name="sigpac_muni"/>
+		                                <field name="sigpac_pol"/>
+		                                <field name="sigpac_par"/>
+		                                <field name="sigpac_rec"/>
+					</page>
+				</notebook>
+    			</group>
+                </form>
+            </field>
+         </record>
+
+        <record id="view_agro_project_parcela" model="ir.ui.view">
+            <field name="name">agro.project.parcela.tree</field>
+            <field name="model">agro.project.parcela</field>
+            <field name="arch" type="xml">
+                <tree string="Parcelas">
+                                <field name="name"/>
+                                <field name="explotacion_id"/>
+                                <field name="ref_catastral"/>
+                                <field name="sigpac_pol"/>
+                                <field name="sigpac_par"/>
+                                <field name="cultivo_id"/>
+                                <field name="variedad_id" domain="[('cultivo_id','=',cultivo_id)]"/>
+                                <field name="superficie" sum="Total superficie"/>
+                                <field name="num_plantas" sum="Total plantas"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_agro_project_parcela_search_form" model="ir.ui.view">
+            <field name="name">agro.project.parcela.search.form</field>
+            <field name="model">agro.project.parcela</field>
+            <field name="arch" type="xml">
+               <search string="Parcelas">
+                    <field name="name"/>
+                    <field name="explotacion_id"/>
+                    <field name="ref_catastral"/>
+                    <field name="sigpac_prov"/>
+                    <field name="sigpac_muni"/>
+                    <field name="sigpac_pol"/>
+                    <field name="sigpac_par"/>
+                    <field name="sigpac_rec"/>
+                    <field name="riego"/>
+                    <field name="tipo_riego"/>
+                    <field name="cultivo_id"/>
+                    <field name="variedad_id" domain="[('cultivo_id','=',cultivo_id)]"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Provincia" 
+                                name="group_provincia_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'sigpac_prov'}"/>
+                        <filter string="Municipio" 
+                                name="group_municipio_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'sigpac_muni'}"/>
+                        <filter string="Explotacion" 
+                                name="group_explotacion_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'explotacion_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+     <!-- ACCION -->
+	<record id="act_agro_project_parcela" model="ir.actions.act_window">
+	    <field name="name">parcelas</field>
+	    <field name="res_model">agro.project.parcela</field>
+	    <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_agro_project_parcela_search_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new parcela.
+              </p><p>
+                OpenERP's agro parcela project management...
+              </p>
+            </field>
+	</record>
+		
+
+	<!-- MENU -->
+	<menuitem id="menu_agro_project_parcela" 
+                  name="parcelas"
+                  parent="agro_base.menu_agro_work_management"
+                  action="act_agro_project_parcela"/>
+	</data>
+</openerp>
