@@ -47,6 +47,7 @@ Vertical Project management for a Farm company
         'agro_project_project_view.xml',
         'agro_project_task_view.xml',
         'agro_res_parner_view.xml',
+        'agro_project_parcela_view.xml',
     ],
     'installable': True,
     'auto_install': False,

@@ -50,6 +50,17 @@ class agro_project_explotacion(osv.osv):
     _columns={
             'name': fields.char('Nombre', size=60, required = True),
             'propietario_id': fields.many2one('res.partner', 'Propietario', required=True),
+            'parcela_ids': fields.one2many('agro.project.parcela', 'explotacion_id', 'Parcelas'),
+            'campana_ids': fields.one2many('project.project', 'explotacion_id', 'Campanas'),
+    }
+agro_project_explotacion()
+
+class agro_project_parcela(osv.osv):
+    _name = 'agro.project.parcela'
+    _description = 'Parcela'
+
+    _columns={
+            'name': fields.char('Nombre', size=60, required = True),
             'ref_catastral': fields.char('Ref. Catastral', size=30),
             'prop_tomo': fields.integer('Tomo'),
             'prop_libro': fields.integer('Libro'),
@@ -66,11 +77,11 @@ class agro_project_explotacion(osv.osv):
             'tipo_riego': fields.char('Tipo de riego', size=128),
             'variedad_id': fields.many2one('agro.project.variedad', 'Variedad', size=128, required = True),
             'cultivo_id': fields.many2one('agro.project.cultivo', 'Cultivo', required = True),
+            'superficie': fields.float('Superficie (Ha)'),
             'num_plantas': fields.integer('Num. plantas'),
-            'campana_ids': fields.one2many('project.project', 'explotacion_id', 'Campanas'),
-              }
-
-agro_project_explotacion()
+            'explotacion_id': fields.many2one('agro.project.explotacion', 'Explotacion'),
+    }
+agro_project_parcela()
 
 class agro_res_partner_explotacion(osv.osv):
     _inherit = 'res.partner'

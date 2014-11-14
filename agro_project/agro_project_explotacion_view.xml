@@ -9,28 +9,10 @@
             		<group colspan="4" col="2">
                                 <field name="name"/>
                                 <field name="propietario_id"/>
-                                <field name="ref_catastral"/>
-                                <field name="superficie"/>
-                                <field name="riego"/>
-                                <field name="tipo_riego"/>
-                                <field name="cultivo_id"/>
-                                <field name="variedad_id" domain="[('cultivo_id','=',cultivo_id)]"/>
-                                <field name="num_plantas"/>
 				<notebook>
-                        		<page string="Reg. Propiedad">
-		                                <field name="prop_tomo"/>
-                		      		<field name="prop_libro"/>
-		                                <field name="prop_folio"/>
-		                                <field name="prop_inscripcion"/>
-		                                <field name="prop_fecha"/>
-					</page>
-					<page string="Sig PAC">
-		                                <field name="sigpac_prov"/>
-                		                <field name="sigpac_muni"/>
-		                                <field name="sigpac_pol"/>
-		                                <field name="sigpac_par"/>
-		                                <field name="sigpac_rec"/>
-					</page>
+                                        <page string="Parcelas">
+                                            <field name="parcela_ids"/>
+                                        </page>
 					<page string="Campanas">
 						<field name="campana_ids" nolabel="1">
 							<tree string="Campanas">
@@ -53,13 +35,6 @@
                 <tree string="explotaciones">
                                 <field name="name"/>
                                 <field name="propietario_id"/>
-                                <field name="ref_catastral"/>
-                                <field name="sigpac_pol"/>
-                                <field name="sigpac_par"/>
-                                <field name="cultivo_id"/>
-                                <field name="variedad_id" domain="[('cultivo_id','=',cultivo_id)]"/>
-                                <field name="superficie" sum="Total superficie"/>
-                                <field name="num_plantas" sum="Total plantas"/>
                 </tree>
             </field>
         </record>
@@ -69,29 +44,9 @@
             <field name="model">agro.project.explotacion</field>
             <field name="arch" type="xml">
                <search string="explotaciones">
-                                <field name="name"/>
-                                <field name="propietario_id"/>
-                                <field name="ref_catastral"/>
-                                <field name="sigpac_prov"/>
-                                <field name="sigpac_muni"/>
-                                <field name="sigpac_pol"/>
-                                <field name="sigpac_par"/>
-                                <field name="sigpac_rec"/>
-                                <field name="riego"/>
-                                <field name="tipo_riego"/>
-                                <field name="cultivo_id"/>
-                                <field name="variedad_id" domain="[('cultivo_id','=',cultivo_id)]"/>
+                    <field name="name"/>
+                    <field name="propietario_id"/>
                     <group expand="0" string="Group By...">
-                        <filter string="Provincia" 
-                                name="group_provincia_id" 
-                                icon="terp-personal" 
-                                domain="[]"  
-                                context="{'group_by':'sigpac_prov'}"/>
-                        <filter string="Municipio" 
-                                name="group_municipio_id" 
-                                icon="terp-personal" 
-                                domain="[]"  
-                                context="{'group_by':'sigpac_muni'}"/>
                         <filter string="Propietario" 
                                 name="group_propietario_id" 
                                 icon="terp-personal" 
