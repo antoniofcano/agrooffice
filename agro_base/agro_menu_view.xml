@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Agro Project -->
+        <menuitem name="Campo"
+            id="agro_base.menu_main_agro_work"
+            groups="group_agro_manager,group_agro_user"
+            sequence="40"/>
+
+        <menuitem id="agro_base.menu_agro_work_management" name="Trabajos" parent="agro_base.menu_main_agro_work" sequence="1"/>
+        <menuitem id="agro_base.menu_agro_config" name="Configuracion" parent="agro_base.menu_main_agro_work" sequence="2"/>
+
+        <menuitem name="Fincas / Campanas" id="menu_agro_project_fincas" 
+            parent="agro_base.menu_agro_work_management" 
+            sequence="0"
+            action="project.open_view_project_all"/>
+
+        <menuitem name="Trabajos" id="menu_agro_project_trabajos" 
+            parent="agro_base.menu_agro_work_management" 
+            sequence="0"
+            action="project.action_view_task"/>
+
+        <!-- Agro Empleados -->
+ <!--
+        <menuitem name="Empleados"
+            id="agro_base.menu_main_agro_rh"
+            groups="group_agro_manager,group_agro_user"
+            sequence="40"/>
+
+        <menuitem id="agro_base.menu_agro_rh_management" name="Empleados" parent="agro_base.menu_main_agro_rh" sequence="1"/>
+
+        <menuitem name="Empleados" id="menu_agro_rh_empleados" 
+            parent="agro_base.menu_agro_rh_management" 
+            sequence="0"
+            action="hr.open_view_employee_list_my"/>
+
+        <menuitem name="Partes de horas" id="menu_agro_rh_horas" 
+            parent="agro_base.menu_agro_rh_management" 
+            sequence="0"
+            action="hr_timesheet.act_hr_timesheet_line_evry1_all_form"/>
+
+        <menuitem id="agro_base.menu_agro_rh_report" name="Informes" parent="agro_base.menu_main_agro_rh" sequence="1"/>
+        <menuitem name="Analisis hojas de asistencia" id="menu_agro_rh_horas" 
+            parent="agro_base.menu_agro_rh_report" 
+            sequence="0"
+            action="hr_timesheet_sheet.action_timesheet_report_stat_all"/>
+     
+-->       
+        <!-- Agro Compras -->
+        <menuitem name="Compras"
+            id="agro_base.menu_main_agro_purchase"
+            groups="group_agro_manager,group_agro_user"
+            sequence="40"/>
+
+        <menuitem id="agro_base.menu_agro_purchase_management" name="Compras" parent="agro_base.menu_main_agro_purchase" sequence="1"/>
+
+        <menuitem name="Pedidos/Compras" id="menu_agro_purchase_pedidos" 
+            parent="agro_base.menu_agro_purchase_management" 
+            sequence="8"
+            action="purchase.purchase_form_action"/>
+
+        <menuitem name="Productos" id="menu_agro_purchase_productos" 
+            parent="agro_base.menu_agro_purchase_management" 
+            sequence="9"
+            action="product.product_normal_action_puchased"/>
+          
+        <menuitem name="Proveedores" id="menu_agro_purchase_proveedores" 
+            parent="agro_base.menu_agro_purchase_management" 
+            sequence="10"
+            action="base.action_partner_supplier_form"/>
+            
+        <!-- Agro Ventas -->
+        <menuitem name="Ventas"
+            id="agro_base.menu_main_agro_sale"
+            groups="group_agro_manager,group_agro_user"
+            sequence="40"/>
+
+        <menuitem id="agro_base.menu_agro_sale_management" name="Ventas" parent="agro_base.menu_main_agro_sale" sequence="1"/>
+
+        <menuitem name="Clientes" id="menu_agro_sale_clientes" 
+            parent="agro_base.menu_agro_sale_management" 
+            sequence="8"
+            action="base.action_partner_form"/>
+
+        <menuitem name="Contratos" id="menu_agro_sale_contratos" 
+            parent="agro_base.menu_agro_sale_management" 
+            sequence="9"
+            action="account_analytic_analysis.action_account_analytic_overdue_all"/>
+                 
+        <menuitem name="Productos"
+            action="product.product_normal_action_sell" 
+            id="product.menu_products" 
+            parent="agro_base.menu_agro_sale_management" 
+            sequence="11"/>
+
+        <menuitem id="agro_base.menu_agro_sale_invoice" name="Facturacion" parent="agro_base.menu_main_agro_sale" sequence="1"/>
+
+        <menuitem name="Tiempo y materiales a facturar" id="menu_agro_sale_invoice_time" 
+            parent="agro_base.menu_agro_sale_invoice" 
+            sequence="10"
+            action="account_analytic_analysis.action_hr_tree_invoiced_all"/>                    
+
+        <!-- Agro Contabilidad -->      
+        <menuitem name="Contabilidad"
+            id="agro_base.menu_main_agro_acc"
+            groups="group_agro_manager,group_agro_user"
+            sequence="40"/>
+
+        <menuitem id="agro_base.menu_agro_acc_management" name="Contabilidad analitica" parent="agro_base.menu_main_agro_acc" sequence="1"/>
+
+        <menuitem name="Apuntes" id="menu_agro_acc_analytic" 
+            parent="agro_base.menu_agro_acc_management" 
+            sequence="8"
+            action="account.action_account_analytic_journal_open_form"/>
+
+        <menuitem name="Plan de cuentas" id="menu_agro_acc_analytic_acc" 
+            parent="agro_base.menu_agro_acc_management" 
+            sequence="9"
+            action="account.action_account_analytic_account_tree2"/>
+                 
+        <menuitem name="Informe analitico"
+            action="account.action_analytic_entries_report"
+            id="menu_agro_acc_analytic_diary_report"
+            parent="agro_base.menu_agro_acc_management" sequence="10"/>
+
+        
+        <menuitem id="agro_base.menu_agro_acc_config" name="Configuracion" parent="agro_base.menu_main_agro_acc" sequence="1" groups="group_agro_manager"/>
+        <!-- Configuracion: Cuentas , Diarios   groups="analytic.group_analytic_accounting"-->
+        <menuitem name="Cuentas analiticas" id="menu_agro_acc_config_journal_analytic" 
+            parent="agro_base.menu_agro_acc_config" 
+            sequence="10"
+            action="account.action_account_analytic_account_form"/>
+        <menuitem name="Diarios analiticos" id="menu_agro_acc_config_diary_analytic" 
+            parent="agro_base.menu_agro_acc_config" 
+            sequence="10"
+            action="account.action_account_analytic_journal_form"/>
+    </data>
+</openerp>

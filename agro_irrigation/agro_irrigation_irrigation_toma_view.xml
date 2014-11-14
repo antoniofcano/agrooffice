@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	<record model="ir.ui.view" id="agro_irrigation_toma_form_view">
+            <field name="name">agro.irrigation.toma.form.view</field>
+            <field name="model">agro.irrigation.toma</field>
+            <field name="arch" type="xml">
+            	<form string="Toma">
+            		<group colspan="4" col="2">
+                                <field name="procedencia"/>
+                                <field name="coordenada_x"/>
+                                <field name="coordenada_y"/>
+                                <field name="huso"/>
+                                <field name="proyeccion"/>
+                                <field name="embalse_id"/>
+                                <field name="contador_id"/>
+                                <field name="precintado"/>
+    			</group>
+                </form>
+            </field>
+         </record>                  
+
+        <record id="view_agro_irrigation_toma" model="ir.ui.view">
+            <field name="name">agro.irrigation.toma.tree</field>
+            <field name="model">agro.irrigation.toma</field>
+            <field name="arch" type="xml">
+                <tree string="Tomas">
+                                <field name="procedencia"/>
+                                <field name="coordenada_x"/>
+                                <field name="coordenada_y"/>
+                                <field name="huso"/>
+                                <field name="proyeccion"/>
+                                <field name="embalse_id"/>
+                                <field name="contador_id"/>
+                                <field name="precintado"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_agro_irrigation_toma_search_form" model="ir.ui.view">
+            <field name="name">agro.irrigation.toma.search.form</field>
+            <field name="model">agro.irrigation.toma</field>
+            <field name="arch" type="xml">
+               <search string="Tomas">
+                    <field name="procedencia"/>
+                </search>
+            </field>
+        </record>
+
+     <!-- ACCION -->
+	<record id="act_agro_irrigation_toma" model="ir.actions.act_window">
+	    <field name="name">Tomas</field>
+	    <field name="res_model">agro.irrigation.toma</field>
+	    <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_agro_irrigation_toma_search_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new Toma.
+              </p><p>
+                OpenERP's agro Toma management...
+              </p>
+            </field>
+	</record>
+		
+
+	<!-- MENU -->
+	<menuitem id="menu_agro_irrigation_toma" 
+                  name="Tomas"
+                  parent="menu_agro_irrigation_irrigation"
+                  action="act_agro_irrigation_toma"/>
+	</data>
+</openerp>

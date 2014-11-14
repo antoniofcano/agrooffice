@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_create,perm_unlink,perm_write,perm_read
+access_agro_project_cultivo_agro_manager,agro.project.cultivo,agro_project.model_agro_project_cultivo,agro_base.group_agro_manager,1,1,1,1
+access_agro_project_explotacion_agro_manager,agro.project.explotacion,agro_project.model_agro_project_explotacion,agro_base.group_agro_manager,1,1,1,1
+access_agro_project_pesada_agro_manager,agro.project.pesada,agro_project.model_agro_project_pesada,agro_base.group_agro_manager,1,1,1,1
+access_agro_project_tipo_labor_agro_manager,agro.project.tipo.labor,agro_project.model_agro_project_tipo_labor,agro_base.group_agro_manager,1,1,1,1
+access_agro_project_variedad_agro_manager,agro.project.variedad,agro_project.model_agro_project_variedad,agro_base.group_agro_manager,1,1,1,1
+access_agro_project_cultivo_agro_user,agro.project.cultivo,agro_project.model_agro_project_cultivo,agro_base.group_agro_user,0,0,0,1
+access_agro_project_explotacion_agro_user,agro.project.explotacion,agro_project.model_agro_project_explotacion,agro_base.group_agro_user,0,0,0,1
+access_agro_project_pesada_agro_user,agro.project.pesada,agro_project.model_agro_project_pesada,agro_base.group_agro_user,0,0,0,1
+access_agro_project_tipo_labor_agro_user,agro.project.tipo.labor,agro_project.model_agro_project_tipo_labor,agro_base.group_agro_user,0,0,0,1
+access_agro_project_variedad_agro_user,agro.project.variedad,agro_project.model_agro_project_variedad,agro_base.group_agro_user,0,0,0,1
+

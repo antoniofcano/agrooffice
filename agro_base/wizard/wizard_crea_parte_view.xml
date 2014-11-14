@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	<record model="ir.ui.view" id="wizard_crea_parte_form_view">
+            <field name="name">wizard.crea.parte.form.view</field>
+            <field name="model">wizard.crea.parte</field>
+            <field name="arch" type="xml">
+            	<form string="Generar Partes">
+            		<group colspan="4" col="2">
+                                <field name="campana_id"/>
+                                <field name="tarea_id" domain="[('project_id','=',campana_id)]"/>
+                                <field name="resumen"/>
+                      		<field name="fecha"/>
+                                <field name="horas" widget="float_time"/>
+    				<field name="employee_ids" nolabel="1" colspan="4" height="320" width="780"/>
+    			</group>
+    			<group colspan="4" col="2">
+                		<button name="cerrar" type="object" string="Cancelar"/>
+                		<button name="crea_partes" type="object" string="Crear Partes"/>
+    			</group>
+                </form>
+            </field>
+         </record>                  
+     <!-- ACCION -->
+	<record id="act_wizard_crea_parte" model="ir.actions.act_window">
+		<field name="name">Crear Parte</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">wizard.crea.parte</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+	</record>
+		
+	<!-- MENU -->
+	<menuitem id="menu_crea_parte" 
+                  name="Crear partes"
+                  parent="agro_base.menu_agro_work_management"
+                  action="act_wizard_crea_parte"/>
+	</data>
+</openerp>

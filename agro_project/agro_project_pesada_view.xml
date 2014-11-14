@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	<record model="ir.ui.view" id="agro_project_pesada_form_view">
+            <field name="name">agro.project.pesada.form.view</field>
+            <field name="model">agro.project.pesada</field>
+            <field name="arch" type="xml">
+            	<form string="Pesada">
+            		<group colspan="4" col="2">
+                                <field name="name"/>
+                                <field name="campana_id"/>
+                                <field name="tarea_id" domain="[('project_id','=',campana_id)]"/>
+                                <field name="fecha_recoleccion"/>
+                      		<field name="fecha_pesada"/>
+                                <field name="kilos"/>
+                                <field name="suciedad"/>
+                                <field name="rendimiento"/>
+    			</group>
+                </form>
+            </field>
+         </record>                  
+
+        <record model="ir.ui.view" id="agro_project_pesada_kanban_view">
+            <field name="name">agro.project.pesada.kanban.view</field>
+            <field name="model">agro.project.pesada</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0" class="oe_background_grey">
+                    <!--list of field to be loaded -->
+                    <field name="name"/>
+                    <field name="campana_id"/>
+                    <field name="fecha_pesada"/>
+                    <field name="kilos"/>
+                    <field name="suciedad"/>
+                    <field name="rendimiento"/>
+                    <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_project oe_kanban_global_click">
+                               <div class="oe_kanban_content">
+                                    <h4>
+                                        <a type="edit">
+                                            <field name="name"/>
+                                        </a>
+                                    </h4>
+                                    <ul>
+                                        <li>Campaña: <field name="campana_id"/></li>
+                                        <li>Fecha de pesada: <field name="fecha_pesada"/></li>
+                                        <li>Kilos: <field name="kilos"/></li>
+                                        <li>Suciedad: <field name="suciedad"/></li>
+                                        <li>Rendimiento graso: <field name="rendimiento"/></li>
+                                    </ul>
+                               </div>
+                        </div>
+                    </t>
+                    </templates>
+                </kanban>
+            </field>
+         </record>
+
+
+        <record id="view_agro_project_pesada_tree" model="ir.ui.view">
+            <field name="name">agro.project.pesada.tree</field>
+            <field name="model">agro.project.pesada</field>
+            <field name="arch" type="xml">
+                <tree string="Pesadas">
+                    <field name="name"/>
+                    <field name="campana_id"/>
+                    <field name="tarea_id"/>
+                    <field name="fecha_recoleccion"/>
+                    <field name="fecha_pesada"/>
+                    <field name="kilos" sum="Total kilos"/>
+                    <field name="suciedad" avg="Suciedad media"/>
+                    <field name="rendimiento" avg="Rendimiento medio"/>
+                    <field name="horas" sum="Total horas"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_agro_project_pesada_search_form" model="ir.ui.view">
+            <field name="name">agro.project.pesada.search.form</field>
+            <field name="model">agro.project.pesada</field>
+            <field name="arch" type="xml">
+               <search string="Pesadas">
+                    <field name="name"/>
+                    <field name="campana_id"/>
+                    <field name="tarea_id"/>
+                    <field name="fecha_recoleccion"/>
+                    <field name="fecha_pesada"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Campana" 
+                                name="group_campana_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'campana_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+     <!-- ACCION -->
+	<record id="act_agro_project_pesada" model="ir.actions.act_window">
+	    <field name="name">Pesadas</field>
+	    <field name="res_model">agro.project.pesada</field>
+	    <field name="view_mode">kanban,tree,form</field>
+            <field name="search_view_id" ref="view_agro_project_pesada_search_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new weight.
+              </p><p>
+                OpenERP's agro weight project management...
+              </p>
+            </field>
+	</record>
+		
+
+	<!-- MENU -->
+	<menuitem id="menu_agro_project_pesada" 
+                  name="Pesadas"
+                  parent="agro_base.menu_agro_work_management"
+                  action="act_agro_project_pesada"/>
+	</data>
+</openerp>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	<record model="ir.ui.view" id="agro_machine_machine_form_view">
+            <field name="name">agro.machine.machine.form.view</field>
+            <field name="model">agro.machine.machine</field>
+            <field name="arch" type="xml">
+            	<form string="Maquina">
+            		<group colspan="4" col="2">
+                                <field name="name"/>
+                                <field name="marca"/>
+                                <field name="modelo"/>
+                                <field name="num_bastidor"/>
+                                <field name="matricula"/>
+                                <field name="tipo_maquina_id"/>
+                                <field name="titular_id"/>
+                                <field name="explotacion_id"/>
+                                <field name="service_ids"/>
+    			</group>
+                </form>
+            </field>
+         </record>                  
+
+        <record id="view_agro_machine_machine" model="ir.ui.view">
+            <field name="name">agro.machine.machine.tree</field>
+            <field name="model">agro.machine.machine</field>
+            <field name="arch" type="xml">
+                <tree string="Maquinas">
+                    <field name="name"/>
+                    <field name="marca"/>
+                    <field name="num_bastidor"/>
+                    <field name="matricula"/>
+                    <field name="tipo_maquina_id"/>
+                    <field name="titular_id"/>
+                    <field name="explotacion_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_agro_machine_machine_search_form" model="ir.ui.view">
+            <field name="name">agro.machine.machine.search.form</field>
+            <field name="model">agro.machine.machine</field>
+            <field name="arch" type="xml">
+               <search string="Maquinas">
+                    <field name="name"/>
+                    <field name="num_bastidor"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Marca" 
+                                name="group_marca_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'tipo_marca_id'}"/>
+                        <filter string="Explotacion" 
+                                name="group_explotacion_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'explotacion_id'}"/>
+                        <filter string="Tipo de maquina" 
+                                name="group_tipo_maquina_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'tipo_maquina_id'}"/>
+                        <filter string="Titular" 
+                                name="group_titular_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'titular_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+     <!-- ACCION -->
+	<record id="act_agro_machine_machine" model="ir.actions.act_window">
+	    <field name="name">maquinas</field>
+	    <field name="res_model">agro.machine.machine</field>
+	    <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_agro_machine_machine_search_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new Maquina.
+              </p><p>
+                OpenERP's agro machine management...
+              </p>
+            </field>
+	</record>
+		
+
+	<!-- MENU -->
+	<menuitem id="menu_agro_machine_machine" 
+                  name="Maquinaria e Infraestructura"
+                  parent="agro_base.menu_agro_work_management"
+                  action="act_agro_machine_machine"/>
+	</data>
+</openerp>

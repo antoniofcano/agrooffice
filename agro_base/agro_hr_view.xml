@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_agro_empleado_form" model="ir.ui.view">
+            <field name="name">agro.hr.hr.employee.view.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//page[@string='Personal Information']" position="attributes">
+                        <attribute name="groups">base.group_hr_user,agro_base.group_agro_user</attribute>
+                    </xpath>
+                    <page string="HR Settings" position="attributes">
+                        <attribute name="groups">base.group_hr_user,agro_base.group_agro_user</attribute>
+                    </page>
+                </data>
+            </field>
+        </record>
+    </data>
+</openerp>
+

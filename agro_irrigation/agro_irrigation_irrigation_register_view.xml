@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	<record model="ir.ui.view" id="agro_irrigation_register_form_view">
+            <field name="name">agro.irrigation.register.form.view</field>
+            <field name="model">agro.irrigation.register</field>
+            <field name="arch" type="xml">
+            	<form string="Riego">
+            		<group colspan="4" col="2">
+                                <field name="name"/>
+                                <field name="riego_id"/>
+                                <field name="tipo_riego_id"/>
+                                <field name="fecha_inicio"/>
+                                <field name="fecha_fin"/>
+                                <field name="lectura_inicio"/>
+                                <field name="lectura_final"/>
+                                <field name="observaciones"/>
+    			</group>
+                </form>
+            </field>
+         </record>                  
+
+        <record id="view_agro_irrigation_register" model="ir.ui.view">
+            <field name="name">agro.irrigation.register.tree</field>
+            <field name="model">agro.irrigation.register</field>
+            <field name="arch" type="xml">
+                <tree string="Registro de Riegos">
+                    <field name="name"/>
+                    <field name="riego_id"/>
+                    <field name="tipo_riego_id"/>
+                    <field name="fecha_inicio"/>
+                    <field name="fecha_fin"/>
+                    <field name="lectura_inicio"/>
+                    <field name="lectura_final"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_agro_irrigation_register_search_form" model="ir.ui.view">
+            <field name="name">agro.irrigation.register.search.form</field>
+            <field name="model">agro.irrigation.register</field>
+            <field name="arch" type="xml">
+               <search string="Registro de Riegos">
+                    <field name="name"/>
+                    <field name="riego_id"/>
+                    <field name="tipo_riego_id"/>
+                    <field name="fecha_inicio"/>
+                    <field name="fecha_fin"/>
+                </search>
+            </field>
+        </record>
+
+     <!-- ACCION -->
+	<record id="act_agro_irrigation_register" model="ir.actions.act_window">
+	    <field name="name">Registro de Riegos</field>
+	    <field name="res_model">agro.irrigation.register</field>
+	    <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_agro_irrigation_register_search_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new Registro.
+              </p><p>
+                OpenERP's agro Registro management...
+              </p>
+            </field>
+	</record>
+		
+
+	<!-- MENU -->
+	<menuitem id="menu_agro_irrigation_register" 
+                  name="Registro de Riegos"
+                  parent="menu_agro_irrigation_irrigation"
+                  action="act_agro_irrigation_register"/>
+	</data>
+</openerp>
