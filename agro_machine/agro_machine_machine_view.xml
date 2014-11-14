@@ -16,6 +16,7 @@
                                 <field name="titular_id"/>
                                 <field name="explotacion_id"/>
                                 <field name="service_ids"/>
+                                <field name="repostaje_ids"/>
     			</group>
                 </form>
             </field>
