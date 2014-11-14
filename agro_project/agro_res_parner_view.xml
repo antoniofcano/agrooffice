@@ -11,16 +11,6 @@
                             <field name="explotacion_ids" nolabel="1">
                                 <tree string="Explotaciones">
                                     <field name="name"/>
-                                    <field name="ref_catastral"/>
-                                    <field name="sigpac_prov"/>
-                                    <field name="sigpac_muni"/>
-                                    <field name="sigpac_pol"/>
-                                    <field name="sigpac_par"/>
-                                    <field name="sigpac_rec"/>
-                                    <field name="superficie"/>
-                                    <field name="num_plantas"/>
-                                    <field name="cultivo_id"/>
-                                    <field name="variedad_id"/>
                                 </tree>
                             </field>
                         </page>
