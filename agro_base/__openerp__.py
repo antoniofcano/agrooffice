@@ -33,7 +33,6 @@
         'project_timesheet', 
         'hr_timesheet_sheet', 
         'sale_analytic_plans',
-        'purchase_analytic_plans',
         'document_ftp', 
     ],
     'description': """
