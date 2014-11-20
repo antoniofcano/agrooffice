@@ -27,7 +27,7 @@ class agro_health_plaga(osv.osv):
     _description = 'Plagas'
     
     _columns={
-        'name': fields.char('Plaga', size=128, required = True),
+        'name': fields.char('Nombre', size=128, required = True),
         'sci': fields.char('Nombre cientifico', size=128,),
         'tipo': fields.selection([('0','Plaga'), ('1','Enfermedad')], 'Tipo'), 
         'cultivo_id': fields.many2one('agro.project.cultivo', 'Cultivo asociado'),
