@@ -8,6 +8,9 @@
             	<form string="plaga">
             		<group colspan="4" col="2">
                                 <field name="name"/>
+                                <field name="sci"/>
+                                <field name="cultivo_id"/>
+                                <field name="descripcion"/>
                                 <field name="activa"/>
     			</group>
                 </form>
@@ -20,6 +23,8 @@
             <field name="arch" type="xml">
                 <tree string="Plagas">
                     <field name="name"/>
+                    <field name="sci"/>
+                    <field name="cultivo_id"/>
                 </tree>
             </field>
         </record>
@@ -30,6 +35,8 @@
             <field name="arch" type="xml">
                <search string="Plagas">
                     <field name="name"/>
+                    <field name="sci"/>
+                    <field name="cultivo_id"/>
                 </search>
             </field>
         </record>
