@@ -9,6 +9,7 @@
             		<group colspan="4" col="2">
                                 <field name="name"/>
                                 <field name="sci"/>
+                                <field name="tipo"/>
                                 <field name="cultivo_id"/>
                                 <field name="descripcion"/>
                                 <field name="activa"/>
@@ -24,6 +25,7 @@
                 <tree string="Plagas">
                     <field name="name"/>
                     <field name="sci"/>
+                    <field name="tipo"/>
                     <field name="cultivo_id"/>
                 </tree>
             </field>
