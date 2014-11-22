@@ -5,20 +5,36 @@
             <field name="name">agro.machine.machine.form.view</field>
             <field name="model">agro.machine.machine</field>
             <field name="arch" type="xml">
-            	<form string="Maquina">
-            		<group colspan="4" col="2">
-                                <field name="name"/>
-                                <field name="marca"/>
-                                <field name="modelo"/>
-                                <field name="num_bastidor"/>
-                                <field name="matricula"/>
-                                <field name="tipo_maquina_id"/>
-                                <field name="titular_id"/>
-                                <field name="explotacion_id"/>
-                                <field name="service_ids"/>
-                                <field name="repostaje_ids"/>
-    			</group>
-                </form>
+                <form string="Maquina" version="7.0">
+<!--
+                <header
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sent,approved,done"/>
+                </header>
+--> 
+               <sheet>
+                    <div class="oe_right oe_button_box" name="buttons">
+                        <button type="object"
+                            name="service_open"
+                            string="Servicios y Mantenimientos"/>
+                        <button type="object"  name="repostaje_open"
+                            string="Repostajes"/>
+                    </div>
+                    <group colspan="4" col="2">
+                            <field name="name"/>
+                            <field name="marca"/>
+                            <field name="modelo"/>
+                            <field name="num_bastidor"/>
+                            <field name="matricula"/>
+                            <field name="tipo_maquina_id"/>
+                            <field name="titular_id"/>
+                            <field name="explotacion_id"/>
+<!--
+                            <field name="service_ids"/>
+                            <field name="repostaje_ids"/>
+-->
+    		    </group>
+                 </sheet>
+                 </form>
             </field>
          </record>                  
 

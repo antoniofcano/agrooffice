@@ -93,9 +93,11 @@
 		
 
 	<!-- MENU -->
+<!--
 	<menuitem id="menu_agro_machine_repostaje" 
                   name="Repostaje de Maquinas"
                   parent="menu_agro_machine_machine"
                   action="act_agro_machine_repostaje"/>
+-->
 	</data>
 </openerp>

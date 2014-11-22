@@ -25,7 +25,49 @@ from tools.translate import _
 class agro_machine_machine(osv.osv):
     _name = 'agro.machine.machine'
     _description = 'Maquinaria'
+
+    def repostaje_open(self, cr, uid, ids, context=None):
+        mod_obj = self.pool.get('ir.model.data')
+        act_obj = self.pool.get('ir.actions.act_window')
+
+        result = mod_obj.get_object_reference(cr, uid, 'agro_machine', 'act_agro_machine_repostaje')
+        id = result and result[1] or False
+        result = act_obj.read(cr, uid, [id], context=context)[0]
+        rep_ids = []
+        for machine in self.browse(cr, uid, ids, context=context):
+            rep_ids+= [repostaje.id for repostaje in machine.repostaje_ids]
+        if not rep_ids:
+            raise osv.except_osv(_('Error!'), _('Please create Repostajes.'))
+         #choose the view_mode accordingly
+        if len(rep_ids)>1:
+            result['domain'] = "[('id','in',["+','.join(map(str, rep_ids))+"])]"
+        else:
+            res = mod_obj.get_object_reference(cr, uid, 'agro_machine', 'agro_machine_repostaje_form_view')
+            result['views'] = [(res and res[1] or False, 'form')]
+            result['res_id'] = rep_ids and rep_ids[0] or False
+        return result
     
+    def service_open(self, cr, uid, ids, context=None):
+        mod_obj = self.pool.get('ir.model.data')
+        act_obj = self.pool.get('ir.actions.act_window')
+
+        result = mod_obj.get_object_reference(cr, uid, 'agro_machine', 'act_agro_machine_service')
+        id = result and result[1] or False
+        result = act_obj.read(cr, uid, [id], context=context)[0]
+        ser_ids = []
+        for machine in self.browse(cr, uid, ids, context=context):
+            ser_ids+= [service.id for service in machine.service_ids]
+        if not ser_ids:
+            raise osv.except_osv(_('Error!'), _('Please create Servicios.'))
+         #choose the view_mode accordingly
+        if len(ser_ids)>1:
+            result['domain'] = "[('id','in',["+','.join(map(str, ser_ids))+"])]"
+        else:
+            res = mod_obj.get_object_reference(cr, uid, 'agro_machine', 'agro_machine_service_form_view')
+            result['views'] = [(ser and ser[1] or False, 'form')]
+            result['res_id'] = ser_ids and ser_ids[0] or False
+        return result
+
     _columns={
         'name': fields.char('Maquina', size=128, required = True),
         'marca': fields.many2one('agro.machine.marca', 'Marca'),
