@@ -37,14 +37,9 @@ class agro_machine_machine(osv.osv):
         for machine in self.browse(cr, uid, ids, context=context):
             rep_ids+= [repostaje.id for repostaje in machine.repostaje_ids]
         if not rep_ids:
-            raise osv.except_osv(_('Error!'), _('Please create Repostajes.'))
-         #choose the view_mode accordingly
-        if len(rep_ids)>1:
-            result['domain'] = "[('id','in',["+','.join(map(str, rep_ids))+"])]"
+            result['domain'] = "[('id', 'in', [])]"
         else:
-            res = mod_obj.get_object_reference(cr, uid, 'agro_machine', 'agro_machine_repostaje_form_view')
-            result['views'] = [(res and res[1] or False, 'form')]
-            result['res_id'] = rep_ids and rep_ids[0] or False
+            result['domain'] = "[('id','in',["+','.join(map(str, rep_ids))+"])]"
         return result
     
     def service_open(self, cr, uid, ids, context=None):
@@ -58,14 +53,9 @@ class agro_machine_machine(osv.osv):
         for machine in self.browse(cr, uid, ids, context=context):
             ser_ids+= [service.id for service in machine.service_ids]
         if not ser_ids:
-            raise osv.except_osv(_('Error!'), _('Please create Servicios.'))
-         #choose the view_mode accordingly
-        if len(ser_ids)>1:
-            result['domain'] = "[('id','in',["+','.join(map(str, ser_ids))+"])]"
+            result['domain'] = "[('id', 'in', [])]"
         else:
-            res = mod_obj.get_object_reference(cr, uid, 'agro_machine', 'agro_machine_service_form_view')
-            result['views'] = [(ser and ser[1] or False, 'form')]
-            result['res_id'] = ser_ids and ser_ids[0] or False
+            result['domain'] = "[('id','in',["+','.join(map(str, ser_ids))+"])]"
         return result
 
     _columns={
