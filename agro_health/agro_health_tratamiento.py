@@ -39,7 +39,7 @@ class agro_health_tratamiento(osv.osv):
         'dosis_ids': fields.one2many('agro.health.tratamiento.dosis', 'tratamiento_id', 'Dosis de productos'),
         'task_ids': fields.many2many('project.task', 'agro_tratamiento_task', 'tratamiento_id', 'task_id', 'Tareas asociadas', required = True),
         'responsable_id': fields.many2one('res.users', 'Responsable', required = True),
-        'observaciones': fields.char('Observaciones', size=200),
+        'observaciones': fields.text('Observaciones'),
     }
 agro_health_tratamiento()
 
