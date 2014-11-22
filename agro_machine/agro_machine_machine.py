@@ -95,7 +95,6 @@ class agro_machine_repostaje(osv.osv):
 
     _columns={
         'machine_id': fields.many2one('agro.machine.machine', 'Maquina', required = True),
-        'descripcion': fields.char('Descripcion', size=128),
         'fecha': fields.date('Fecha', required = True),
         'lectura': fields.float('Kms/Horas/...'),
         'coste': fields.float('Coste', required = True),

@@ -8,7 +8,6 @@
             	<form string="Repostaje Maquina">
             		<group colspan="4" col="2">
                                 <field name="machine_id"/>
-                                <field name="descripcion"/>
                                 <field name="fecha"/>
                                 <field name="lectura"/>
                                 <field name="coste"/>
@@ -46,7 +45,6 @@
             <field name="arch" type="xml">
                <search string="Repostaje Maquinas">
                     <field name="machine_id"/>
-                    <field name="descripcion"/>
                     <group expand="0" string="Group By...">
                         <filter string="Maquina" 
                                 name="group_machine_id" 
