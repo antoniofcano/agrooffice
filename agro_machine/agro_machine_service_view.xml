@@ -42,6 +42,17 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="view_agro_machine_service_graph">
+            <field name="name">agro.machine.service.graph</field>
+            <field name="model">agro.machine.service</field>
+            <field name="arch" type="xml">
+                <graph string="Invoices" type="bar">
+                    <field name="machine_id"/>
+                    <field name="coste" operator="+"/>
+                </graph>
+            </field>
+        </record>
+
         <record id="view_agro_machine_service_search_form" model="ir.ui.view">
             <field name="name">agro.machine.service.search.form</field>
             <field name="model">agro.machine.service</field>
@@ -90,7 +101,7 @@
 	<record id="act_agro_machine_service" model="ir.actions.act_window">
 	    <field name="name">Mantenimiento maquinas</field>
 	    <field name="res_model">agro.machine.service</field>
-	    <field name="view_mode">tree,form</field>
+	    <field name="view_mode">tree,form,graph</field>
             <field name="search_view_id" ref="view_agro_machine_service_search_form"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
