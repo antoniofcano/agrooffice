@@ -67,7 +67,7 @@ class agro_project_explotacion(osv.osv):
         mod_obj = self.pool.get('ir.model.data')
         act_obj = self.pool.get('ir.actions.act_window')
 
-        result = mod_obj.get_object_reference(cr, uid, 'agro_project', 'act_agro_project_campana')
+        result = mod_obj.get_object_reference(cr, uid, 'project', 'open_view_project_all')
         id = result and result[1] or False
         result = act_obj.read(cr, uid, [id], context=context)[0]
         campana_ids = []
