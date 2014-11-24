@@ -106,7 +106,7 @@ class agro_machine_service(osv.osv):
         'campana_id': fields.many2one('project.project', 'Campana', required = True),
         'task_id': fields.many2one('project.task', 'Tarea asociada', required = True),
         'responsable_id': fields.many2one('res.users', 'Responsable', required = True),
-        'observaciones': fields.char('Observaciones', size=200),
+        'observaciones': fields.text('Observaciones'),
         'order_id': fields.many2one('purchase.order', 'Orden de compra'),
     }
 agro_machine_service()
@@ -134,7 +134,6 @@ class agro_machine_repostaje(osv.osv):
         'campana_id': fields.many2one('project.project', 'Campana', required = True),
         'task_id': fields.many2one('project.task', 'Tarea asociada', required = True),
         'responsable_id': fields.many2one('res.users', 'Responsable', required = True),
-        'observaciones': fields.char('Observaciones', size=200),
         'order_id': fields.many2one('purchase.order', 'Orden de compra'),
     }
 agro_machine_repostaje()

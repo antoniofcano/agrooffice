@@ -103,11 +103,9 @@
 		
 
 	<!-- MENU -->
-<!--
 	<menuitem id="menu_agro_machine_service" 
                   name="Mantenimiento de Maquinas"
                   parent="menu_agro_machine_machine"
                   action="act_agro_machine_service"/>
--->
 	</data>
 </openerp>
