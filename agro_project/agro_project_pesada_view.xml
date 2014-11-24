@@ -96,11 +96,22 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="view_agro_project_pesada_graph">
+            <field name="name">agro.project.pesada.graph</field>
+            <field name="model">agro.project.pesada</field>
+            <field name="arch" type="xml">
+                <graph string="Pesadas" type="bar">
+                    <field name="campana_id"/>
+                    <field name="kilos" operator="+"/>
+                </graph>
+            </field>
+        </record>
+
      <!-- ACCION -->
 	<record id="act_agro_project_pesada" model="ir.actions.act_window">
 	    <field name="name">Pesadas</field>
 	    <field name="res_model">agro.project.pesada</field>
-	    <field name="view_mode">kanban,tree,form</field>
+	    <field name="view_mode">kanban,tree,form,graph</field>
             <field name="search_view_id" ref="view_agro_project_pesada_search_form"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
