@@ -5,8 +5,14 @@
             <field name="name">agro.irrigation.irrigation.form.view</field>
             <field name="model">agro.irrigation.irrigation</field>
             <field name="arch" type="xml">
-            	<form string="Riego">
-            		<group colspan="4" col="2">
+            	<form string="Riego" version="7.0">
+                <sheet>
+                    <div class="oe_right oe_button_box" name="buttons">
+                        <button type="object"
+                            name="register_open"
+                            string="Registros"/>
+                    </div>
+           	    <group colspan="4" col="2">
                                 <field name="name"/>
                                 <field name="propietario_id"/>
                                 <field name="explotacion_ids"/>
@@ -20,14 +26,14 @@
                                         <field name='machine_id'/>
                                     </tree>
                                 </field>
-
                                 <field name="fecha_inicio"/>
                                 <field name="dotacion"/>
                                 <field name="superficie"/>
                                 <field name="superficie_riego"/>
                                 <field name="sistema_riego_id"/>
                                 <field name="observaciones"/>
-    			</group>
+    		    </group>
+                </sheet>
                 </form>
             </field>
          </record>                  

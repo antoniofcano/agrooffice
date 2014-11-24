@@ -67,9 +67,11 @@
 		
 
 	<!-- MENU -->
+<!--
 	<menuitem id="menu_agro_irrigation_register" 
                   name="Registro de Riegos"
                   parent="menu_agro_irrigation_irrigation"
                   action="act_agro_irrigation_register"/>
 	</data>
+-->
 </openerp>

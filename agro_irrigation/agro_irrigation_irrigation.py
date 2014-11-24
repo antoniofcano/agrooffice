@@ -25,6 +25,22 @@ from tools.translate import _
 class agro_irrigation_irrigation(osv.osv):
     _name = 'agro.irrigation.irrigation'
     _description = 'Riegos'
+
+    def register_open(self, cr, uid, ids, context=None):
+        mod_obj = self.pool.get('ir.model.data')
+        act_obj = self.pool.get('ir.actions.act_window')
+
+        result = mod_obj.get_object_reference(cr, uid, 'agro_irrigation', 'act_agro_irrigation_register')
+        id = result and result[1] or False
+        result = act_obj.read(cr, uid, [id], context=context)[0]
+        reg_ids = []
+        for irrigation in self.browse(cr, uid, ids, context=context):
+            reg_ids+= [register.id for register in irrigation.register_ids]
+        if not reg_ids:
+            result['domain'] = "[('id', 'in', [])]"
+        else:
+            result['domain'] = "[('id','in',["+','.join(map(str, reg_ids))+"])]"
+        return result
     
     _columns={
         'name': fields.char('Nombre', size=50, required = True),
@@ -37,7 +53,8 @@ class agro_irrigation_irrigation(osv.osv):
         'superficie': fields.float('Superficie total'),
         'superficie_riego': fields.float('Superficie a regar'),
         'sistema_riego_id': fields.many2one('agro.irrigation.sistema', 'Sistema de riego'),
-        'observaciones': fields.char('Observaciones', size=200),
+        'observaciones': fields.text('Observaciones', size=200),
+        'register_ids': fields.one2many('agro.irrigation.register', 'riego_id', 'Registros'),
     }
 agro_irrigation_irrigation()
 
