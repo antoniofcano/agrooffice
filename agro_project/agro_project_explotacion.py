@@ -47,6 +47,38 @@ class agro_project_explotacion(osv.osv):
     _name = 'agro.project.explotacion'
     _description = 'Explotacion'
 
+    def parcela_open(self, cr, uid, ids, context=None):
+        mod_obj = self.pool.get('ir.model.data')
+        act_obj = self.pool.get('ir.actions.act_window')
+
+        result = mod_obj.get_object_reference(cr, uid, 'agro_project', 'act_agro_project_parcela')
+        id = result and result[1] or False
+        result = act_obj.read(cr, uid, [id], context=context)[0]
+        parcela_ids = []
+        for explotacion in self.browse(cr, uid, ids, context=context):
+            parcela_ids+= [parcela.id for parcela in explotacion.parcela_ids]
+        if not parcela_ids:
+            result['domain'] = "[('id', 'in', [])]"
+        else:
+            result['domain'] = "[('id','in',["+','.join(map(str, parcela_ids))+"])]"
+        return result
+
+    def campana_open(self, cr, uid, ids, context=None):
+        mod_obj = self.pool.get('ir.model.data')
+        act_obj = self.pool.get('ir.actions.act_window')
+
+        result = mod_obj.get_object_reference(cr, uid, 'agro_project', 'act_agro_project_campana')
+        id = result and result[1] or False
+        result = act_obj.read(cr, uid, [id], context=context)[0]
+        campana_ids = []
+        for explotacion in self.browse(cr, uid, ids, context=context):
+            campana_ids+= [campana.id for campana in explotacion.campana_ids]
+        if not campana_ids:
+            result['domain'] = "[('id', 'in', [])]"
+        else:
+            result['domain'] = "[('id','in',["+','.join(map(str, campana_ids))+"])]"
+        return result
+
     _columns={
             'name': fields.char('Nombre', size=60, required = True),
             'propietario_id': fields.many2one('res.partner', 'Propietario', required=True),

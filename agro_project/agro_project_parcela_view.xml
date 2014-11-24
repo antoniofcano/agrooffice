@@ -110,9 +110,11 @@
 		
 
 	<!-- MENU -->
+<!--
 	<menuitem id="menu_agro_project_parcela" 
                   name="parcelas"
                   parent="agro_base.menu_agro_work_management"
                   action="act_agro_project_parcela"/>
 	</data>
+-->
 </openerp>

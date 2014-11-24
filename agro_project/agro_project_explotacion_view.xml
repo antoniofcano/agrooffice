@@ -5,13 +5,23 @@
             <field name="name">agro.project.explotacion.form.view</field>
             <field name="model">agro.project.explotacion</field>
             <field name="arch" type="xml">
-            	<form string="explotacion">
-            		<group colspan="4" col="2">
+               <form string="explotacion" version="7.0">
+               <sheet>
+                    <div class="oe_right oe_button_box" name="buttons">
+                        <button type="object"
+                            name="parcela_open"
+                            string="Parcelas"/>
+                        <button type="object"  
+                            name="campana_open"
+                            string="Campanas"/>
+                    </div>
+            	    <group colspan="4" col="2">
                                 <field name="name"/>
                                 <field name="propietario_id"/>
+<!--
 				<notebook>
                                         <page string="Parcelas">
-                                            <field name="parcela_ids"/>
+                                            <field name="parcela_ids" nolabel="1"/>
                                         </page>
 					<page string="Campanas">
 						<field name="campana_ids" nolabel="1">
@@ -23,7 +33,9 @@
 						</field>
 					</page>
 				</notebook>
-    			</group>
+-->
+    		    </group>
+                </sheet>
                 </form>
             </field>
          </record>                  
