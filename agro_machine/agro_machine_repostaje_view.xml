@@ -42,7 +42,7 @@
             <field name="name">agro.machine.repostaje.graph</field>
             <field name="model">agro.machine.repostaje</field>
             <field name="arch" type="xml">
-                <graph string="Invoices" type="bar">
+                <graph string="Repostajes" type="bar">
                     <field name="machine_id"/>
                     <field name="coste" operator="+"/>
                 </graph>

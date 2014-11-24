@@ -46,7 +46,7 @@
             <field name="name">agro.machine.service.graph</field>
             <field name="model">agro.machine.service</field>
             <field name="arch" type="xml">
-                <graph string="Invoices" type="bar">
+                <graph string="Servicios" type="bar">
                     <field name="machine_id"/>
                     <field name="coste" operator="+"/>
                 </graph>
