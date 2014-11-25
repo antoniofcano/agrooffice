@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	<record model="ir.ui.view" id="agro_hr_edu_form_view">
+            <field name="name">agro.hr.edu.form.view</field>
+            <field name="model">agro.hr.edu</field>
+            <field name="arch" type="xml">
+            	<form string="Formacion y certificados">
+            		<group colspan="4" col="2">
+                                <field name="empleado_id"/>
+                                <field name="name"/>
+                                <field name="fecha_curso"/>
+                                <field name="carnet"/>
+                                <field name="fecha_renovacion"/>
+    			</group>
+                </form>
+            </field>
+         </record>
+
+        <record id="view_agro_hr_edu" model="ir.ui.view">
+            <field name="name">agro.hr.edu.tree</field>
+            <field name="model">agro.hr.edu</field>
+            <field name="arch" type="xml">
+                <tree string="Formacion y certificados">
+                                <field name="empleado_id"/>
+                                <field name="name"/>
+                                <field name="fecha_curso"/>
+                                <field name="carnet"/>
+                                <field name="fecha_renovacion"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_agro_hr_edu_search_form" model="ir.ui.view">
+            <field name="name">agro.hr.edu.search.form</field>
+            <field name="model">agro.hr.edu</field>
+            <field name="arch" type="xml">
+               <search string="Formacion y certificadoss">
+                    <field name="name"/>
+                    <field name="empleado_id"/>
+                    <field name="fecha_curso"/>
+                    <field name="carnet"/>
+                    <field name="fecha_renovacion"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Empleado" 
+                                name="group_empleado_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'empleado_id'}"/>
+                        <filter string="Carnet" 
+                                name="group_carnet_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'carnet'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+     <!-- ACCION -->
+	<record id="act_agro_hr_edu" model="ir.actions.act_window">
+	    <field name="name">Formacion y certificados</field>
+	    <field name="res_model">agro.hr.edu</field>
+	    <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_agro_hr_edu_search_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new Formacion y certificados.
+              </p><p>
+                OpenERP's agro Formacion y certificados management...
+              </p>
+            </field>
+	</record>
+		
+
+	<!-- MENU -->
+	<menuitem id="menu_agro_hr_edu" 
+                  name="Formacion"
+                  parent="hr.menu_hr_main"
+                  action="act_agro_hr_edu"/>
+	</data>
+</openerp>

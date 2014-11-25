@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_create,perm_unlink,perm_write,perm_read
+access_agro_hr_edu_agro_manager,agro.hr.edu,agro_hr.model_agro_hr_edu,agro_base.group_agro_manager,1,1,1,1
+access_agro_hr_advance_agro_manager,agro.hr.advance,agro_hr.model_agro_hr_advance,agro_base.group_agro_manager,1,1,1,1
+access_agro_hr_edu_agro_user,agro.hr.edu,agro_hr.model_agro_hr_edu,agro_base.group_agro_user,0,0,0,1
+access_agro_hr_advance_agro_user,agro.hr.advance,agro_hr.model_agro_hr_advance,agro_base.group_agro_user,0,0,0,1
+
