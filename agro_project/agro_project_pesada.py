@@ -57,18 +57,13 @@ class agro_project_pesada(osv.osv):
 
     def _calc_hours_kilo(self, cr, uid, ids, fields_list, args, context=None):
         vals = {}
-        task_obj = self.pool.get('project.task')
-
-        work_date_fmt = '%Y-%m-%d %H:%M:%S'
-        pesada_date_fmt = '%Y-%m-%d'
 
         for pesada in ids:
             pesada_data = self.browse(cr, uid, pesada, context)
-            horas_kilo = pesada_data.horas / pesada_data.kilos
+            vals[pesada] = float(pesada_data.horas) / float(pesada_data.kilos)
 
-            vals[pesada] = horas_kilo
-        
         return vals
+
 
     _columns={
             'name': fields.integer('Num. de pesada', required = True),
