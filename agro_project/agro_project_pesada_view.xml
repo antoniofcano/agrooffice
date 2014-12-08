@@ -32,6 +32,8 @@
                     <field name="kilos"/>
                     <field name="suciedad"/>
                     <field name="rendimiento"/>
+                    <field name="horas"/>
+                    <field name="horas_kilo"/>
                     <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_card oe_kanban_project oe_kanban_global_click">
@@ -47,6 +49,8 @@
                                         <li>Kilos: <field name="kilos"/></li>
                                         <li>Suciedad: <field name="suciedad"/></li>
                                         <li>Rendimiento graso: <field name="rendimiento"/></li>
+                                        <li>Horas: <field name="horas"/></li>
+                                        <li>Horas/Kilo: <field name="horas_kilo"/></li>
                                     </ul>
                                </div>
                         </div>
@@ -71,6 +75,7 @@
                     <field name="suciedad" avg="Suciedad media"/>
                     <field name="rendimiento" avg="Rendimiento medio"/>
                     <field name="horas" sum="Total horas"/>
+                    <field name="horas_kilo" avg="Media recoleccion"/>
                 </tree>
             </field>
         </record>
@@ -101,7 +106,7 @@
             <field name="model">agro.project.pesada</field>
             <field name="arch" type="xml">
                 <graph string="Pesadas" type="bar">
-                    <field name="campana_id"/>
+                    <field name="fecha_pesada"/>
                     <field name="kilos" operator="+"/>
                 </graph>
             </field>
