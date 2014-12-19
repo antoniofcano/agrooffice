@@ -14,6 +14,7 @@
                                 <field name="explotacion_id"/>
                                 <field name="campana_id" domain="[('explotacion_id', '=', explotacion_id)]"/>
                                 <field name="task_id" domain="[('project_id','=',campana_id)]"/>
+                                <field name="tipo_repostaje_id"/>
                                 <field name="responsable_id"/>
                                 <field name="order_id"/>
     			</group>
@@ -34,6 +35,8 @@
                     <field name="explotacion_id"/>
                     <field name="campana_id"/>
                     <field name="task_id"/>
+                    <field name="tipo_labor_id"/>
+                    <field name="tipo_repostaje_id"/>
                 </tree>
             </field>
         </record>
@@ -81,6 +84,16 @@
                                 icon="terp-personal" 
                                 domain="[]"  
                                 context="{'group_by':'task_id'}"/>
+                        <filter string="Tipo de labor" 
+                                name="group_tipo_labor_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'tipo_labor_id'}"/>
+                        <filter string="Tipo de repostaje" 
+                                name="group_tipo_repostaje_id" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'tipo_repostaje_id'}"/>
                         </group>
                 </search>
             </field>

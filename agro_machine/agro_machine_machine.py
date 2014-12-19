@@ -133,8 +133,26 @@ class agro_machine_repostaje(osv.osv):
         'explotacion_id': fields.many2one('agro.project.explotacion', 'Explotacion', required = True),
         'campana_id': fields.many2one('project.project', 'Campana', required = True),
         'task_id': fields.many2one('project.task', 'Tarea asociada', required = True),
+        'tipo_labor_id': fields.related(
+            'task_id',
+            'tipo_labor_id',
+            'name',
+            type="char",
+            relation="project.task",
+            string="Tipo de Labor",
+            store=True),
+        'tipo_repostaje_id': fields.many2one('agro.machine.repostaje.tipo', 'Tipo de repostaje'),
         'responsable_id': fields.many2one('res.users', 'Responsable', required = True),
         'order_id': fields.many2one('purchase.order', 'Orden de compra'),
     }
 agro_machine_repostaje()
+
+class agro_machine_repostaje_tipo(osv.osv):
+    _name = 'agro.machine.repostaje.tipo'
+    _description = 'Tipo de repostaje'
+
+    _columns={
+        'name': fields.char('Tipo de repostaje', size=128, required = True),
+    }
+agro_machine_repostaje_tipo()
 
