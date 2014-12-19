@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_agro_stock_lot_revision_tree" model="ir.ui.view">
+            <field name="name">agro.stock.lot.revision</field>
+            <field name="model">stock.production.lot.revision</field>
+            <field name="inherit_id" ref="stock.view_production_lot_revision_tree"/>
+            <field name="arch" type="xml">
+               <field name="author_id" position="after">
+                    <field name="type_id"/>
+                    <field name="value"/>
+                </field>
+            </field>
+       </record>
+
+       <record id="view_agro_stock_lot_revision_form" model="ir.ui.view">
+            <field name="name">agro.stock.lot.revision.form</field>
+            <field name="model">stock.production.lot.revision</field>
+            <field name="inherit_id" ref="stock.view_production_lot_revision_form"/>
+
+            <field name="arch" type="xml">
+               <field name="author_id" position="after">
+                    <field name="type_id"/>
+                    <field name="value"/>
+                </field>
+            </field>
+       </record>
+    </data>
+</openerp>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_agro_move_tree" model="ir.ui.view">
+            <field name="name">agro.stock.move.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_tree"/>
+            <field name="arch" type="xml">
+               <field name="product_id" position="before">
+                    <field name="campana_id"/>
+                    <field name="horas"/>
+                    <field name="horas_kilo"/>
+                    <field name="rendimiento"/>
+                    <field name="acidez"/>
+                    <field name="suciedad"/>
+                </field>
+            </field>
+       </record>
+
+       <record id="view_agro_move_form" model="ir.ui.view">
+            <field name="name">agro.stock.move.form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+
+            <field name="arch" type="xml">
+                <group name="main_grp" position="after">
+                    <group name="project_detail" string="Proyecto">
+                        <field name="campana_id"/>
+                        <field name="tarea_id" domain="[('project_id','=',campana_id)]"/>
+                        <field name="fecha_recoleccion"/>
+                    </group>
+                </group>
+            </field>
+       </record>
+
+        <record id="view_agro_move_picking_tree" model="ir.ui.view">
+            <field name="name">agro.stock.move.picking.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">
+               <field name="product_id" position="before">
+                    <field name="campana_id"/>
+                    <field name="horas"/>
+                </field>
+            </field>
+       </record>
+
+        <record id="view_agro_move_picking_form" model="ir.ui.view">
+            <field name="name">agro.stock.move.picking.form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_form"/>
+            <field name="arch" type="xml">
+                <group string="Locations" position="after">
+                    <group name="project_detail" string="Proyecto">
+                        <field name="campana_id"/>
+                        <field name="tarea_id" domain="[('project_id','=',campana_id)]"/>
+                        <field name="fecha_recoleccion"/>
+                    </group>
+                </group>
+            </field>
+       </record>
+
+        <record id="view_agro_move_search" model="ir.ui.view">
+            <field name="name">agro.stock.move.search</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_search"/>
+            <field name="arch" type="xml">
+                <filter string="Product" position="before">
+                        <filter string="Campana" 
+                                name="by_campana" 
+                                icon="terp-accessories-archiver" 
+                                domain="[]"  
+                                context="{'group_by':'campana_id'}"/>
+                </filter>
+            </field>
+        </record>
+    </data>
+</openerp>
