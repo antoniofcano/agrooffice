@@ -72,6 +72,6 @@
                   name="Registro de Riegos"
                   parent="menu_agro_irrigation_irrigation"
                   action="act_agro_irrigation_register"/>
-	</data>
 -->
+	</data>
 </openerp>

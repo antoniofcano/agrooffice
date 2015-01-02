@@ -19,8 +19,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from osv import osv, fields
-from tools.translate import _
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
 import time
 import datetime
 
@@ -59,7 +59,8 @@ class agro_stock_move(osv.osv):
 
         for pesada in ids:
             pesada_data = self.browse(cr, uid, pesada, context)
-            vals[pesada] = float(pesada_data.horas) / float(pesada_data.product_qty)
+            
+            vals[pesada] = float(pesada_data.horas) / (float(pesada_data.product_qty) or 1)
 
         return vals
     
@@ -69,27 +70,27 @@ class agro_stock_move(osv.osv):
             'fecha_recoleccion': fields.date('Fecha recoleccion', select='1', required= True),
             'horas': fields.function( _calc_task_hours, method=True, store=True, type='float', string='Horas'),
             'horas_kilo': fields.function( _calc_hours_kilo, method=True, store=True, type='float', string='Horas/Kilo'),
-            'rendimiento': fields.related(
-                'prodlot_id',
-                'rendimiento',
-                type="float",
-                relation="stock.production.lot",
-                string="Rendimiento(%)",
-                store=False),
-            'acidez': fields.related(
-                'prodlot_id',
-                'acidez',
-                type="float",
-                relation="stock.production.lot",
-                string="Acidez(%)",
-                store=False),
-            'suciedad': fields.related(
-                'prodlot_id',
-                'suciedad',
-                type="float",
-                relation="stock.production.lot",
-                string="Suciedad(%)",
-                store=False),
+#            'rendimiento': fields.related(
+#                'prodlot_id',
+#                'rendimiento',
+#                type="float",
+#                relation="stock.production.lot",
+#                string="Rendimiento(%)",
+#                store=False),
+#            'acidez': fields.related(
+#                'prodlot_id',
+#                'acidez',
+#                type="float",
+#                relation="stock.production.lot",
+#                string="Acidez(%)",
+#                store=False),
+#            'suciedad': fields.related(
+#                'prodlot_id',
+#                'suciedad',
+#                type="float",
+#                relation="stock.production.lot",
+#                string="Suciedad(%)",
+#                store=False),
     }
 
 agro_stock_move()

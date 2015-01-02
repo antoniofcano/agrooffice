@@ -19,8 +19,9 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from osv import osv, fields
-from tools.translate import _
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
+from openerp import tools
 import time
 
 class wizard_crea_parte(osv.osv_memory):    
@@ -32,12 +33,12 @@ class wizard_crea_parte(osv.osv_memory):
             'tarea_id': fields.many2one('project.task', 'Tarea', required = True),
             'resumen': fields.char('Resumen del trabajo', size=128, required = True),
             'horas': fields.float('Tiempo dedicado', required = True),
-            'fecha': fields.date('Fecha', select='1', required= True),
+            'fecha': fields.datetime('Fecha', required= True),
             'employee_ids':fields.many2many('hr.employee','rel_partes_trabajadores','parte_id','employee_id', required = True),
               }
     
     _defaults={
-            'fecha': lambda *a: time.strftime('%Y-%m-%d %H:%M:%S'),
+            'fecha': lambda *a: time.strftime('%Y-%m-%d'),
             'horas': 7
     }
 
@@ -53,7 +54,7 @@ class wizard_crea_parte(osv.osv_memory):
             empleado = empleados_obj.browse(cr, uid, emp.id, context)
             val = {
                    'user_id': empleado.user_id.id, 
-                   'date': wizard_data.fecha, 
+                   'date': wizard_data.fecha,
                    'name': wizard_data.resumen, 
                    'task_id': wizard_data.tarea_id.id, 
                    'hours': wizard_data.horas,

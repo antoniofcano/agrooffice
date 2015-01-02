@@ -23,5 +23,4 @@
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 import agro_project_project
-import agro_project_pesada
 import agro_project_explotacion

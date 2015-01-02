@@ -13,11 +13,18 @@
 --> 
                <sheet>
                     <div class="oe_right oe_button_box" name="buttons">
-                        <button type="object"
+                        <button
+                            class="oe_inline oe_stat_button" 
+                            type="object"
                             name="service_open"
-                            string="Servicios y Mantenimientos"/>
-                        <button type="object"  name="repostaje_open"
-                            string="Repostajes"/>
+                            string="Servicios y Mantenimientos"
+                            icon="fa-cogs"/>
+                        <button 
+                            class="oe_inline oe_stat_button"
+                            type="object"  
+                            name="repostaje_open"
+                            string="Repostajes"
+                            icon="fa-car"/>
                     </div>
                     <group colspan="4" col="2">
                             <field name="name"/>

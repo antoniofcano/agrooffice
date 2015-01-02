@@ -22,4 +22,5 @@
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-import agro_stock_move, agro_stock_lot_revision
+import agro_stock_move
+#import agro_stock_lot_revision

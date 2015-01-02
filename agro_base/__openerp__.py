@@ -29,11 +29,14 @@
     'summary': 'Agriculture, Farms, Projects, Tasks',
     'images': [],
     'depends': [
+        'purchase',
+        'sale',
+        'hr',
+        'stock',
         'project',
         'project_timesheet', 
         'hr_timesheet_sheet', 
         'sale_analytic_plans',
-        'document_ftp', 
     ],
     'description': """
 Set menu, groups, access and OpenERP for a Farm company processes

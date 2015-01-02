@@ -6,7 +6,7 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                    <xpath expr="//page[@string='History']" position="after">
+                    <xpath expr="//page[@name='sales_purchases']" position="after">
                         <page string="Explotaciones">
                             <field name="explotacion_ids" nolabel="1">
                                 <tree string="Explotaciones">

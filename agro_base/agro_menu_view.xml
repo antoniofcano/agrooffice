@@ -59,11 +59,15 @@
             sequence="8"
             action="purchase.purchase_form_action"/>
 
+<!--
+-odoo8-
         <menuitem name="Productos" id="menu_agro_purchase_productos" 
             parent="agro_base.menu_agro_purchase_management" 
             sequence="9"
             action="product.product_normal_action_puchased"/>
-          
+    
+-->
+      
         <menuitem name="Proveedores" id="menu_agro_purchase_proveedores" 
             parent="agro_base.menu_agro_purchase_management" 
             sequence="10"

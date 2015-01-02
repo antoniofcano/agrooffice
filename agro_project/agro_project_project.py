@@ -19,7 +19,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from osv import osv, fields
+from openerp.osv import osv, fields
 
 class agro_project_project(osv.osv):    
     _inherit = 'project.project'
@@ -36,7 +36,7 @@ class agro_project_task(osv.osv):
 
     _columns={
             'tipo_labor_id': fields.many2one('agro.project.tipo.labor', 'Tipo de labor'),
-            'pesada_ids': fields.one2many('agro.project.pesada', 'tarea_id','Pesadas'),
+            #'pesada_ids': fields.one2many('agro.project.pesada', 'tarea_id','Pesadas'),
     }
 
 agro_project_task()

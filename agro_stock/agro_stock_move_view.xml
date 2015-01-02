@@ -10,9 +10,11 @@
                     <field name="campana_id"/>
                     <field name="horas"/>
                     <field name="horas_kilo"/>
+<!--
                     <field name="rendimiento"/>
                     <field name="acidez"/>
                     <field name="suciedad"/>
+-->
                 </field>
             </field>
        </record>

@@ -66,7 +66,6 @@ access_agro_account_move_line,account.move.line,account.model_account_move_line,
 access_agro_account_analytic_line,account.analytic.line,account.model_account_analytic_line,agro_base.group_agro_user,1,0,0,0
 access_agro_account_move_reconcile,account.move.reconcile,account.model_account_move_reconcile,agro_base.group_agro_user,1,0,0,0
 access_agro_stock_production_lot_user,stock.production.lot user,stock.model_stock_production_lot,agro_base.group_agro_user,1,1,1,0
-access_agro_stock_production_lot_revision,stock.production.lot.revision,stock.model_stock_production_lot_revision,agro_base.group_agro_user,1,1,1,0
 access_agro_res_partner_agro_manager,res.partner.purchase.manager,base.model_res_partner,agro_base.group_agro_manager,1,1,1,0
 access_agro_product_uom_categ_agro_manager,product.uom.categ agro_manager,product.model_product_uom_categ,agro_base.group_agro_manager,1,1,1,1
 access_agro_product_uom_agro_manager,product.uom agro_manager,product.model_product_uom,agro_base.group_agro_manager,1,1,1,1
@@ -85,10 +84,7 @@ access_agro_product_pricelist_version_agro_manager,product.pricelist.version agr
 access_agro_product_pricelist_item_agro_manager,product.pricelist.item agro_manager,product.model_product_pricelist_item,agro_base.group_agro_manager,1,1,1,1
 access_agro_account_account_agro_manager,account.account purchase manager,account.model_account_account,agro_base.group_agro_manager,1,0,0,0
 access_agro_account_journal_agro_manager,account.journal purchase manager,account.model_account_journal,agro_base.group_agro_manager,1,0,0,0
-access_agro_stock_tracking_agro_user,stock.tracking purchase.user,stock.model_stock_tracking,agro_base.group_agro_user,1,1,1,0
 access_agro_stock_location_agro_manager,stock.location purchase manager,stock.model_stock_location,agro_base.group_agro_manager,1,0,0,0
-access_agro_stock_warehouse_orderpoint_manager,stock.warehouse.orderpoint,procurement.model_stock_warehouse_orderpoint,agro_base.group_agro_manager,1,0,0,0
-access_agro_stock_warehouse_orderpoint_manager,stock.warehouse.orderpoint,procurement.model_stock_warehouse_orderpoint,agro_base.group_agro_user,1,0,0,0
 access_agro_purchase_order_stock_worker,purchase.order,purchase.model_purchase_order,agro_base.group_agro_user,1,0,0,0
 access_agro_purchase_order_line_stock_worker,purchase.order.line,purchase.model_purchase_order_line,agro_base.group_agro_user,1,0,0,0
 access_agro_product_product_sale_manager,product.product salemanager,product.model_product_product,agro_base.group_agro_manager,1,1,1,1
@@ -108,4 +104,3 @@ access_agro_account_fiscalyear_hr_user,account.account.fiscalyear.user,account.m
 access_agro_sale_order_manager,sale.order.manager,sale.model_sale_order,agro_base.group_agro_manager,1,1,1,1
 access_agro_sale_order_user,sale.order.manager,sale.model_sale_order,agro_base.group_agro_user,1,0,0,0
 access_agro_analytic_entries_report_manager,account.analytic.entries.report,account.model_analytic_entries_report,agro_base.group_agro_user,1,0,0,0
-access_agro_timesheet_report,timesheet.report,hr_timesheet_sheet.model_timesheet_report,agro_base.group_agro_manager,1,1,0,0

@@ -42,8 +42,8 @@ Vertical Stock management for a Farm company
     'data': [
 #        'security/ir.model.access.csv',
         'agro_stock_move_view.xml',
-        'agro_stock_lot_revision_view.xml',
-        'agro_stock_lot_view.xml',
+#        'agro_stock_lot_revision_view.xml',
+#        'agro_stock_lot_view.xml',
     ],	
     'installable': True,
     'auto_install': False,
