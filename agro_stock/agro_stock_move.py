@@ -44,12 +44,13 @@ class agro_stock_move(osv.osv):
             for work in task_works:
                 work_date_time = datetime.datetime.strptime(work.date, work_date_fmt)
                 work_date = datetime.date(work_date_time.year, work_date_time.month, work_date_time.day)
+      
+                if pesada_data.fecha_recoleccion:
+                    pesada_date_time = datetime.datetime.strptime(pesada_data.fecha_recoleccion, pesada_date_fmt)
+                    pesada_date = datetime.date(pesada_date_time.year, pesada_date_time.month, pesada_date_time.day)
 
-                pesada_date_time = datetime.datetime.strptime(pesada_data.fecha_recoleccion, pesada_date_fmt)
-                pesada_date = datetime.date(pesada_date_time.year, pesada_date_time.month, pesada_date_time.day)
-
-                if pesada_date == work_date:
-                    hours = hours + work.hours
+                    if pesada_date == work_date:
+                        hours = hours + work.hours
 
             vals[pesada] = hours
         return vals
@@ -65,9 +66,9 @@ class agro_stock_move(osv.osv):
         return vals
     
     _columns={
-            'campana_id': fields.many2one('project.project', 'Campana', required = True),
-            'tarea_id': fields.many2one('project.task', 'Tarea', required = True),
-            'fecha_recoleccion': fields.date('Fecha recoleccion', select='1', required= True),
+            'campana_id': fields.many2one('project.project', 'Campana', ),
+            'tarea_id': fields.many2one('project.task', 'Tarea', ),
+            'fecha_recoleccion': fields.date('Fecha recoleccion', select='1', ),
             'horas': fields.function( _calc_task_hours, method=True, store=True, type='float', string='Horas'),
             'horas_kilo': fields.function( _calc_hours_kilo, method=True, store=True, type='float', string='Horas/Kilo'),
 #            'rendimiento': fields.related(
