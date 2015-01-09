@@ -35,10 +35,8 @@
                             <field name="tipo_maquina_id"/>
                             <field name="titular_id"/>
                             <field name="explotacion_id"/>
-<!--
-                            <field name="service_ids"/>
-                            <field name="repostaje_ids"/>
--->
+                            <field name="order_id"/>
+                            <field name="garantia"/>
     		    </group>
                  </sheet>
                  </form>
