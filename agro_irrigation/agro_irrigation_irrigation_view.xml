@@ -7,11 +7,15 @@
             <field name="arch" type="xml">
             	<form string="Riego" version="7.0">
                 <sheet>
-                    <div class="oe_right oe_button_box" name="buttons">
-                        <button type="object"
+                   <div class="oe_right oe_button_box" name="buttons">
+                        <button
+                            class="oe_inline oe_stat_button" 
+                            type="object"
                             name="register_open"
-                            string="Registros"/>
+                            string="Registros"
+                            icon="fa-pencil-square-o"/>
                     </div>
+
            	    <group colspan="4" col="2">
                                 <field name="name"/>
                                 <field name="propietario_id"/>

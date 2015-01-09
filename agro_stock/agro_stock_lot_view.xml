@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-<!--
--odoo8-
     <data>
-        <record id="view_agro_stock_lot_tree" model="ir.ui.view">
-            <field name="name">agro.stock.lot</field>
+        <record id="view_agro_production_lot_tree" model="ir.ui.view">
+            <field name="name">agro.production.lot.tree</field>
             <field name="model">stock.production.lot</field>
             <field name="inherit_id" ref="stock.view_production_lot_tree"/>
             <field name="arch" type="xml">
-               <field name="date" position="after">
-                    <field name="rendimiento"/>
-                    <field name="acidez"/>
-                    <field name="suciedad"/>
+               <field name="create_date" position="after">
+                    <field name="rendimiento" avg="Media"/>
+                    <field name="acidez" avg="Calidad"/>
+                    <field name="suciedad" avg="Suciedad"/>
                 </field>
             </field>
        </record>
+
+        <record id="view_agro_production_lot_form" model="ir.ui.view">
+            <field name="name">agro.production.lot.form</field>
+            <field name="model">stock.production.lot</field>
+            <field name="inherit_id" ref="stock.view_production_lot_form"/>
+            <field name="arch" type="xml">
+               <xpath expr="//page[@string='Products']" position="after">
+                   <page string="Revisions">
+                        <field name="revisions"/>
+                   </page>
+               </xpath>
+            </field>
+       </record>
     </data>
--->
 </openerp>

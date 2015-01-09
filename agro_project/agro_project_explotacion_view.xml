@@ -7,13 +7,19 @@
             <field name="arch" type="xml">
                <form string="explotacion" version="7.0">
                <sheet>
-                    <div class="oe_right oe_button_box" name="buttons">
-                        <button type="object"
+                   <div class="oe_right oe_button_box" name="buttons">
+                        <button
+                            class="oe_inline oe_stat_button" 
+                            type="object"
                             name="parcela_open"
-                            string="Parcelas"/>
-                        <button type="object"  
+                            string="Parcelas"
+                            icon="fa-tree"/>
+                        <button 
+                            class="oe_inline oe_stat_button"
+                            type="object"  
                             name="campana_open"
-                            string="Campanas"/>
+                            string="Campanas"
+                            icon="fa-tasks"/>
                     </div>
             	    <group colspan="4" col="2">
                                 <field name="name"/>

@@ -28,6 +28,7 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
+
 class agro_stock_lot(osv.osv):
     _inherit = 'stock.production.lot'
 
@@ -77,13 +78,7 @@ class agro_stock_lot(osv.osv):
         return vals
 
     _columns={
-            'rendimiento': fields.related(
-                'prodlot_id',
-                'rendimiento',
-                type="float",
-                relation="stock.move",
-                string="Kilos",
-                store=False),
+            'revisions': fields.one2many('agro.stock.production.lot.revision', 'lot_id', 'Revisions'),
             'rendimiento': fields.function( _get_rdto, method=True, store=False, type='float', string='Rendimiento graso(%)'),
             'acidez': fields.function( _get_acidez, method=True, store=False, type='float', string='Acidez(%)'),
             'suciedad': fields.function( _get_suciedad, method=True, store=False, type='float', string='Suciedad(%)'),
@@ -91,15 +86,28 @@ class agro_stock_lot(osv.osv):
 
 agro_stock_lot()
 
-class agro_stock_lot_revision(osv.osv):
-    _inherit = 'stock.production.lot.revision'
+class agro_stock_production_lot_revision(osv.osv):
+    _name = 'agro.stock.production.lot.revision'
+    _description = 'Serial Number Revision'
 
-    _columns={
+    _columns = {
+        'name': fields.char('Revision Name', size=64, required=True),
+        'description': fields.text('Description'),
+        'date': fields.date('Revision Date'),
+        'indice': fields.char('Revision Number', size=16),
+        'author_id': fields.many2one('res.users', 'Author'),
+        'lot_id': fields.many2one('stock.production.lot', 'Serial Number', select=True, ondelete='cascade'),
         'type_id': fields.many2one('agro.stock.production.lot.revision.type', 'Tipo de observacion'),
         'value': fields.float('Cantidad', ),
     }
 
-agro_stock_lot_revision()
+    _defaults = {
+        'author_id': lambda x, y, z, c: z,
+        'date': fields.date.context_today,
+    }
+
+
+agro_stock_production_lot_revision()
 
 class agro_stock_lot_revision_type(osv.osv):
     _name = 'agro.stock.production.lot.revision.type'
