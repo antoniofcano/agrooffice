@@ -69,6 +69,7 @@ class agro_stock_move(osv.osv):
             'campana_id': fields.many2one('project.project', 'Campana', ),
             'tarea_id': fields.many2one('project.task', 'Tarea', ),
             'fecha_recoleccion': fields.date('Fecha recoleccion', select='1', ),
+            'departamento_id': fields.many2one('hr.department', 'Departamento/Cuadrilla', ),
             'horas': fields.function( _calc_task_hours, method=True, store=True, type='float', string='Horas'),
             'horas_kilo': fields.function( _calc_hours_kilo, method=True, store=True, type='float', string='Horas/Kilo'),
 #            'rendimiento': fields.related(
