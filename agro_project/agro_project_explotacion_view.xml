@@ -8,39 +8,31 @@
                <form string="explotacion" version="7.0">
                <sheet>
                    <div class="oe_right oe_button_box" name="buttons">
-                        <button
-                            class="oe_inline oe_stat_button" 
-                            type="object"
-                            name="parcela_open"
-                            string="Parcelas"
-                            icon="fa-tree"/>
-                        <button 
-                            class="oe_inline oe_stat_button"
-                            type="object"  
-                            name="campana_open"
-                            string="Campanas"
-                            icon="fa-tasks"/>
+                       <group>
+                           <button
+                                class="oe_inline oe_stat_button" 
+                                type="object"
+                                name="parcela_open"
+                                string="Parcelas"
+                                icon="fa-tree"/>
+                            <button 
+                                class="oe_inline oe_stat_button"
+                                type="object"  
+                                name="campana_open"
+                                string="Campanas"
+                                icon="fa-tasks"/>
+                        </group>
                     </div>
             	    <group colspan="4" col="2">
+                        <group>
                                 <field name="name"/>
                                 <field name="propietario_id"/>
-<!--
-				<notebook>
-                                        <page string="Parcelas">
-                                            <field name="parcela_ids" nolabel="1"/>
-                                        </page>
-					<page string="Campanas">
-						<field name="campana_ids" nolabel="1">
-							<tree string="Campanas">
-					                    <field name="sequence" widget="handle"/>
-					                    <field name="name" string="Project Name"/>
-					                    <field name="effective_hours" widget="float_time"/>
-					                </tree>
-						</field>
-					</page>
-				</notebook>
--->
-    		    </group>
+                        </group>
+                        <group>
+                                <field name="fito_location_id"/>
+                                <field name="recoleccion_location_id"/>
+                        </group>
+       		    </group>
                 </sheet>
                 </form>
             </field>

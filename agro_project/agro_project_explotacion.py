@@ -84,6 +84,8 @@ class agro_project_explotacion(osv.osv):
             'propietario_id': fields.many2one('res.partner', 'Propietario', required=True),
             'parcela_ids': fields.one2many('agro.project.parcela', 'explotacion_id', 'Parcelas'),
             'campana_ids': fields.one2many('project.project', 'explotacion_id', 'Campanas'),
+            'fito_location_id': fields.many2one('stock.location', 'Ubicacion destino fitosanitarios', ),
+            'recoleccion_location_id': fields.many2one('stock.location', 'Ubicacion origen recoleccion', ),
     }
 agro_project_explotacion()
 
