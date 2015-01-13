@@ -36,6 +36,18 @@
             </field>
         </record>
 
+        <record id="view_agro_irrigation_register_calendar" model="ir.ui.view">
+            <field name="name">agro.irrigation.register.calendar</field>
+            <field name="model">agro.irrigation.register</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <calendar color="riego_id" date_start="fecha_inicio" date_end="fecha_fin" string="Riegos">
+                    <field name="name"/>
+                    <field name="lectura_final"/>
+                </calendar>
+            </field>
+        </record>
+
         <record id="view_agro_irrigation_register_search_form" model="ir.ui.view">
             <field name="name">agro.irrigation.register.search.form</field>
             <field name="model">agro.irrigation.register</field>
@@ -54,7 +66,7 @@
 	<record id="act_agro_irrigation_register" model="ir.actions.act_window">
 	    <field name="name">Registro de Riegos</field>
 	    <field name="res_model">agro.irrigation.register</field>
-	    <field name="view_mode">tree,form</field>
+	    <field name="view_mode">tree,form,calendar</field>
             <field name="search_view_id" ref="view_agro_irrigation_register_search_form"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
