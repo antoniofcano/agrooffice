@@ -71,6 +71,12 @@ class agro_machine_machine(osv.osv):
         'repostaje_ids': fields.one2many('agro.machine.repostaje', 'machine_id', 'Repostaje'),
         'order_id': fields.many2one('purchase.order', 'Orden de compra'),
         'garantia': fields.date('Fecha fin de garantia', ),
+        'machine_ids': fields.many2many(
+            'agro.machine.machine',
+            'agro_machine_machine_kit',
+            'machine_kit_id',
+            'machine_id',
+            'Kit'),
     }
 agro_machine_machine()
 

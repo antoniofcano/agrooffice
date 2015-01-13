@@ -37,6 +37,7 @@
                             <field name="explotacion_id"/>
                             <field name="order_id"/>
                             <field name="garantia"/>
+                            <field name="machine_ids"/>
     		    </group>
                  </sheet>
                  </form>
