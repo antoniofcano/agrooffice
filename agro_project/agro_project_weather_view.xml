@@ -23,6 +23,18 @@
             <field name="model">agro.project.weather.station</field>
             <field name="arch" type="xml">
                 <form string="Estaciones agroclimaticas">
+                   <sheet>
+                   <div class="oe_right oe_button_box" name="buttons">
+                       <group>
+                            <button 
+                                class="oe_inline oe_stat_button"
+                                type="object"  
+                                name="historico_open"
+                                string="Datos historicos"
+                                icon="fa-tasks"/>
+                        </group>
+                    </div>
+                    <group>
                         <field name="name"/>
                         <field name="provincia"/>
                         <field name="cod_estacion"/>
@@ -30,6 +42,8 @@
                         <field name="coord_utm_y"/>
                         <field name="web"/>
                         <field name="observaciones"/>
+                    </group>
+                    </sheet>
                 </form>
             </field>
         </record>

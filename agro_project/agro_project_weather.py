@@ -26,6 +26,24 @@ class agro_project_weather_station(osv.osv):
     _name = 'agro.project.weather.station'
     _description = 'El Tiempo'
 
+    def historico_open(self, cr, uid, ids, context=None):
+        mod_obj = self.pool.get('ir.model.data')
+        act_obj = self.pool.get('ir.actions.act_window')
+
+        result = mod_obj.get_object_reference(cr, uid, 'agro_project', 'act_agro_project_weather')
+        id = result and result[1] or False
+        result = act_obj.read(cr, uid, [id], context=context)[0]
+
+        data_ids = []
+        for station in self.browse(cr, uid, ids, context=context):
+            data_ids += [data.id for data in station.data_ids]
+
+        if not data_ids:
+            result['domain'] = "[('id', 'in', [])]"
+        else:
+            result['domain'] = "[('id','in',["+','.join(map(str, data_ids))+"])]"
+        return result
+
     _columns={
             'name': fields.char('Nombre', size=60),
             'provincia': fields.char('Provincia', size=60),
@@ -34,6 +52,7 @@ class agro_project_weather_station(osv.osv):
             'coord_utm_y': fields.float('Coordenada Y'),
             'web': fields.char('Web', size=400),
             'observaciones': fields.text('Observaciones'),
+            'data_ids': fields.one2many('agro.project.weather', 'station', 'Datos Historicos'),
     }
 agro_project_weather_station()
 
