@@ -30,6 +30,7 @@
                         <group>
                                 <field name="name"/>
                                 <field name="propietario_id"/>
+                                <field name="estacion_meteo_id"/>
                         </group>
                         <group>
                                 <field name="fito_location_id"/>

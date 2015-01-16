@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+        <record id="view_agro_project_weather_station_tree" model="ir.ui.view">
+            <field name="name">agro.project.weather.station.tree</field>
+            <field name="model">agro.project.weather.station</field>
+            <field name="arch" type="xml">
+                <tree string="Estaciones agroclimaticas">
+                        <field name="name"/>
+                        <field name="provincia"/>
+                        <field name="cod_estacion"/>
+                        <field name="coord_utm_x"/>
+                        <field name="coord_utm_y"/>
+                        <field name="web"/>
+                        <field name="observaciones"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_agro_project_weather_station_form" model="ir.ui.view">
+            <field name="name">agro.project.weather.station.form</field>
+            <field name="model">agro.project.weather.station</field>
+            <field name="arch" type="xml">
+                <form string="Estaciones agroclimaticas">
+                        <field name="name"/>
+                        <field name="provincia"/>
+                        <field name="cod_estacion"/>
+                        <field name="coord_utm_x"/>
+                        <field name="coord_utm_y"/>
+                        <field name="web"/>
+                        <field name="observaciones"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="act_agro_project_weather_station" model="ir.actions.act_window">
+            <field name="name">Estacinones agroclimaticas</field>
+            <field name="res_model">agro.project.weather.station</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new weather station.
+              </p><p>
+                OpenERP's agro weather station project management...
+              </p>
+            </field>
+        </record>
+
+        <record id="view_agro_project_weather" model="ir.ui.view">
+            <field name="name">agro.project.weather.tree</field>
+            <field name="model">agro.project.weather</field>
+            <field name="arch" type="xml">
+                <tree string="El Tiempo">
+                        <field name="station"/>
+                        <field name="fecha"/>
+                        <field name="dia"/>
+                        <field name="tmax"/>
+                        <field name="htmax"/>
+                        <field name="tmin"/>
+                        <field name="htmin"/>
+                        <field name="tmed"/>
+                        <field name="hum_max"/>
+                        <field name="hum_min"/>
+                        <field name="hum_med"/>
+                        <field name="vel_viento"/>
+                        <field name="dir_viento"/>
+                        <field name="rad"/>
+                        <field name="precip" sum="Acumuladas"/>
+                        <field name="eto"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_agro_project_weather_graph">
+            <field name="name">agro.project.weather.graph</field>
+            <field name="model">agro.project.weather</field>
+            <field name="arch" type="xml">
+                <graph string="El Tiempo" type="bar">
+                    <field name="station"/>
+                    <field name="precip" operator="+"/>
+                    <field name="tmed"/>
+                    <field name="hum_med"/>
+                    <field name="vel_viento"/>
+                    <field name="eto"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_agro_project_weather_search_form" model="ir.ui.view">
+            <field name="name">agro.project.weather.search.form</field>
+            <field name="model">agro.project.weather</field>
+            <field name="arch" type="xml">
+               <search string="weatheres">
+                    <group expand="0" string="Group By...">
+                        <filter string="Estacion" 
+                                name="group_station" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'station'}"/>
+                        <filter string="Semana" 
+                                name="group_fecha_week" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'fecha:week'}"/>
+                        <filter string="Mes" 
+                                name="group_fecha_month" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'fecha:month'}"/>
+                        <filter string="Year" 
+                                name="group_fecha_year" 
+                                icon="terp-personal" 
+                                domain="[]"  
+                                context="{'group_by':'fecha:year'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+     <!-- ACCION -->
+	<record id="act_agro_project_weather" model="ir.actions.act_window">
+	    <field name="name">Climatologia</field>
+	    <field name="res_model">agro.project.weather</field>
+	    <field name="view_mode">tree,graph</field>
+            <field name="search_view_id" ref="view_agro_project_weather_search_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new weather.
+              </p><p>
+                OpenERP's agro weather project management...
+              </p>
+            </field>
+	</record>
+		
+
+	<!-- MENU -->
+	<menuitem id="menu_agro_project_weather_station" 
+                  name="El Tiempo"
+                  parent="agro_base.menu_agro_work_management"
+                  action="act_agro_project_weather_station"/>
+
+        <menuitem id="menu_agro_project_weather" 
+                  name="Datos historicos"
+                  parent="agro_project.menu_agro_project_weather_station"
+                  action="act_agro_project_weather"/>
+        </data>
+
+</openerp>

@@ -121,6 +121,7 @@ class agro_project_explotacion(osv.osv):
             'recoleccion_location_id': fields.many2one('stock.location', 'Ubicacion origen recoleccion', ),
             'superficie_total': fields.function( _calc_superficie_total, method=True, store=True, type='float', string='Superficie'),
             'plantas_total': fields.function( _calc_plantas_total, method=True, store=True, type='float', string='Plantas'),
+            'estacion_meteo_id': fields.many2one('agro.project.weather.station', 'Estacion Meteorologica'),
     }
 agro_project_explotacion()
 
