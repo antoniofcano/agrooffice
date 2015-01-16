@@ -21,6 +21,7 @@
 ##############################################################################
 from openerp.osv import osv, fields
 from openerp.tools.translate import _
+import logging
 
 class agro_project_cultivo(osv.osv):    
     _name = 'agro.project.cultivo'
@@ -79,6 +80,38 @@ class agro_project_explotacion(osv.osv):
             result['domain'] = "[('id','in',["+','.join(map(str, campana_ids))+"])]"
         return result
 
+    def _calc_superficie_total(self, cr, uid, ids, fields_list, args, context=None):
+        parcela_obj = self.pool.get('agro.project.parcela')
+        vals = {}
+
+        for explotacion in ids:
+            explotacion_data = self.browse(cr, uid, explotacion, context)
+            parcela_ids = explotacion_data.parcela_ids
+            superficie = 0
+
+            for parcela in parcela_ids:
+                parcela_data = parcela_obj.browse(cr, uid, parcela.id, context)
+                superficie = superficie + (parcela_data.superficie or 0)
+
+            vals[explotacion] = superficie
+        return vals
+
+    def _calc_plantas_total(self, cr, uid, ids, fields_list, args, context=None):
+        parcela_obj = self.pool.get('agro.project.parcela')
+        vals = {}
+
+        for explotacion in ids:
+            explotacion_data = self.browse(cr, uid, explotacion, context)
+            parcela_ids = explotacion_data.parcela_ids
+            plantas = 0
+
+            for parcela in parcela_ids:
+                parcela_data = parcela_obj.browse(cr, uid, parcela.id, context)
+                plantas = plantas + (parcela_data.num_plantas or 0)
+
+            vals[explotacion] = plantas
+        return vals
+
     _columns={
             'name': fields.char('Nombre', size=60, required = True),
             'propietario_id': fields.many2one('res.partner', 'Propietario', required=True),
@@ -86,6 +119,8 @@ class agro_project_explotacion(osv.osv):
             'campana_ids': fields.one2many('project.project', 'explotacion_id', 'Campanas'),
             'fito_location_id': fields.many2one('stock.location', 'Ubicacion destino fitosanitarios', ),
             'recoleccion_location_id': fields.many2one('stock.location', 'Ubicacion origen recoleccion', ),
+            'superficie_total': fields.function( _calc_superficie_total, method=True, store=True, type='float', string='Superficie'),
+            'plantas_total': fields.function( _calc_plantas_total, method=True, store=True, type='float', string='Plantas'),
     }
 agro_project_explotacion()
 

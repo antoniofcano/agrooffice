@@ -14,7 +14,10 @@
                                 type="object"
                                 name="parcela_open"
                                 string="Parcelas"
-                                icon="fa-tree"/>
+                                icon="fa-tree">
+                                <field name="superficie_total" string="Ha(s)" widget="statinfo"/>
+                                <field name="plantas_total"  string="Planta(s)" widget="statinfo"/> 
+                            </button>
                             <button 
                                 class="oe_inline oe_stat_button"
                                 type="object"  
@@ -45,6 +48,8 @@
                 <tree string="explotaciones">
                                 <field name="name"/>
                                 <field name="propietario_id"/>
+                                <field name="superficie_total" sum="Superficie"/>
+                                <field name="plantas_total" sum="Plantas"/>
                 </tree>
             </field>
         </record>
