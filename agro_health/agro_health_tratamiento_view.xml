@@ -6,8 +6,17 @@
             <field name="model">agro.health.tratamiento</field>
             <field name="arch" type="xml">
             	<form string="Tratamiento">
+                    <header>
+                        <field name="stage_id" widget="statusbar" clickable="True" options="{'fold_field': 'fold'}"/>
+                    </header>
+                    <sheet string="Tratamiento">
+                        <div class="oe_right">
+                            <field name="kanban_state" class="oe_inline" widget="kanban_state_selection"/>
+                        </div>
+                        <h1>
+                            <field name="name" placeholder="Resumen del tratamieto..." class="oe_inline"/>
+                        </h1>
             		<group colspan="4" col="2">
-                                <field name="name"/>
                                 <field name="explotacion_id"/>
                                 <field name="campana_id" domain="[('explotacion_id', '=', explotacion_id)]"/>
                                 <field name="plaga_ids"/>
@@ -36,6 +45,7 @@
                                 <field name="responsable_id"/>
                                 <field name="observaciones"/>
     			</group>
+                    </sheet>
                 </form>
             </field>
          </record>                  
@@ -99,11 +109,62 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="view_agro_health_tratamiento_kanban">
+            <field name="name">agro.health.tratamiento.kanban</field>
+            <field name="model">agro.health.tratamiento</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id" >
+                    <field name="color"/>
+                    <field name="priority"/>
+                    <field name="stage_id"/>
+                    <field name="kanban_state"/>
+                    <field name="name"/>
+                    <field name="explotacion_id"/>
+                    <field name="campana_id"/>
+                    <field name="tipo_tratamiento_id"/>
+                    <field name="fecha_inicio"/>
+                    <field name="fecha_fin"/>
+                    <field name="responsable_id"/>
+                    <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
+                            <div class="oe_dropdown_toggle oe_dropdown_kanban" groups="base.group_user">
+                                <span class="oe_e">í</span>
+                                <ul class="oe_dropdown_menu">
+                                    <t t-if="widget.view.is_action_enabled('edit')"><li><a type="edit">Edit...</a></li></t>
+                                    <t t-if="widget.view.is_action_enabled('delete')"><li><a type="delete">Delete</a></li></t>
+                                    <br/>
+                                    <li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
+                                </ul>
+                            </div>
+                            <div class="oe_kanban_content">
+                                <div><b><field name="name"/></b></div>
+                                <div>
+                                    <field name="explotacion_id"/> / <field name="campana_id"/><br/>
+                                    <i><field name="fecha_inicio"/></i>--<i><field name="fecha_fin"/></i>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <img t-att-src="kanban_image('res.users', 'image_small', record.responsable_id.raw_value)" t-att-title="record.responsable_id.value" width="24" height="24" class="oe_kanban_avatar pull-right"/>
+                                    <div class="pull-left" groups="base.group_user">
+                                        <field name="kanban_state" widget="kanban_state_selection"/>
+                                        <field name="priority" widget="priority"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="oe_clear"></div>
+                        </div>
+                    </t>
+                    </templates>
+                </kanban>
+            </field>
+         </record>
+
+
      <!-- ACCION -->
 	<record id="act_agro_health_tratamiento" model="ir.actions.act_window">
 	    <field name="name">Tratamientos</field>
 	    <field name="res_model">agro.health.tratamiento</field>
-	    <field name="view_mode">tree,form,calendar</field>
+	    <field name="view_mode">kanban,tree,form,calendar</field>
             <field name="search_view_id" ref="view_agro_health_tratamiento_search_form"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
@@ -113,12 +174,63 @@
               </p>
             </field>
 	</record>
+
+        <record id="agro_health_tratamiento_stage_form_view" model="ir.ui.view">
+            <field name="name">agro.health.tratamiento.stage.form</field>
+            <field name="model">agro.health.tratamiento.stage</field>
+            <field name="arch" type="xml">
+                <form string="Tratamiento Stage">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="fold"/>
+                        </group>
+                    </group>
+                    <field name="description" placeholder="Add a description..."/>
+                </form>
+            </field>
+        </record>
 		
+        <record id="agro_health_tratamiento_stage_tree_view" model="ir.ui.view">
+            <field name="name">agro.health.tratamiento.stage.tree</field>
+            <field name="model">agro.health.tratamiento.stage</field>
+            <field name="arch" type="xml">
+                <tree string="Tratamiento Stage">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="fold"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_agro_health_tratamiento_stage" model="ir.actions.act_window">
+            <field name="name">Stages</field>
+            <field name="res_model">agro.health.tratamiento.stage</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="agro_health_tratamiento_stage_tree_view"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a stage in the tratamiento pipeline.
+              </p><p>
+                Define the steps that will be used in the tratamiento from the
+                planning, up to the closing of the tratamiento or issue.
+                You will use these stages in order to track the progress.
+              </p>
+            </field>
+        </record>
 
 	<!-- MENU -->
 	<menuitem id="menu_agro_health_tratamiento" 
                   name="Tratamientos"
                   parent="agro_base.menu_agro_work_management"
                   action="act_agro_health_tratamiento"/>
-	</data>
+        <menuitem id="menu_agro_health_tratamiento_stage"
+                  name="Estado del tratamiento"
+                  parent="agro_base.menu_agro_config"
+                  action="act_agro_health_tratamiento_stage"/>
+        </data>
+
 </openerp>

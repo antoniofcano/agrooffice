@@ -22,6 +22,26 @@
 from openerp.osv import osv, fields
 from openerp.tools.translate import _
 
+
+class agro_health_tratamiento_stage(osv.osv):
+    _name = 'agro.health.tratamiento.stage'
+    _description = 'Tratamiento Stage'
+    _order = 'sequence'
+    _columns = {
+        'name': fields.char('Stage Name', required=True, translate=True),
+        'description': fields.text('Description'),
+        'sequence': fields.integer('Sequence'),
+        'fold': fields.boolean('Folded in Kanban View',
+                               help='This stage is folded in the kanban view when'
+                               'there are no records in that stage to display.'),
+    }
+
+    _defaults = {
+        'sequence': 1,
+    }
+    _order = 'sequence'
+agro_health_tratamiento_stage()
+
 class agro_health_tratamiento(osv.osv):
     _name = 'agro.health.tratamiento'
     _description = 'Tratamiento'
@@ -40,7 +60,24 @@ class agro_health_tratamiento(osv.osv):
         'task_ids': fields.many2many('project.task', 'agro_tratamiento_task', 'tratamiento_id', 'task_id', 'Tareas asociadas', required = True),
         'responsable_id': fields.many2one('res.users', 'Responsable', required = True),
         'observaciones': fields.text('Observaciones'),
+        'priority': fields.selection([('0','Low'), ('1','Normal'), ('2','High')], 'Priority', select=True),
+        'color': fields.integer('Color Index'),
+        'stage_id': fields.many2one('agro.health.tratamiento.stage', 'Stage', track_visibility='onchange', select=True, copy=False),
+        'kanban_state': fields.selection([('normal', 'In Progress'),('blocked', 'Blocked'),('done', 'Ready for next stage')], 'Kanban State',
+                                         track_visibility='onchange',
+                                         help="A tratamiento's kanban state indicates special situations affecting it:\n"
+                                              " * Normal is the default situation\n"
+                                              " * Blocked indicates something is preventing the progress of this task\n"
+                                              " * Ready for next stage indicates the tratamiento is ready to be pulled to the next stage",
+                                         required=False, copy=False),
     }
+
+    _order = "fecha_inicio, id"
+    _defaults = {
+        'kanban_state': 'normal',
+    }
+
+
 agro_health_tratamiento()
 
 class agro_health_tratamiento_dosis(osv.osv):
