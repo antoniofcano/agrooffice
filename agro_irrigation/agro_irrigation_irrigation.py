@@ -122,6 +122,8 @@ class agro_irrigation_register(osv.osv):
         'fecha_fin': fields.date('Fecha fin'),
         'lectura_inicio': fields.float('Lectura inicial [m3]', required = True),
         'lectura_final': fields.float('Lectura final [m3]'),
+        'campana_id': fields.many2one('project.project', 'Campana', required = True),
+        'task_ids': fields.many2many('project.task', 'agro_irrigation_task', 'irrigation_register_id', 'task_id', 'Tareas asociadas'),
         'observaciones': fields.char('Observaciones', size=200),
     }
 agro_irrigation_register()
