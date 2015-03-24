@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
             	<form string="Repostaje Maquina">
             		<group colspan="4" col="2">
-                                <field name="machine_id"/>
+                                <field name="machinery_id"/>
                                 <field name="fecha"/>
                                 <field name="lectura"/>
                                 <field name="coste"/>
@@ -15,6 +15,7 @@
                                 <field name="campana_id" domain="[('explotacion_id', '=', explotacion_id)]"/>
                                 <field name="task_id" domain="[('project_id','=',campana_id)]"/>
                                 <field name="tipo_repostaje_id"/>
+                                <field name="product_id"/>
                                 <field name="responsable_id"/>
                                 <field name="order_id"/>
     			</group>
@@ -27,7 +28,7 @@
             <field name="model">agro.machine.repostaje</field>
             <field name="arch" type="xml">
                 <tree string="Repostaje Maquinas">
-                    <field name="machine_id"/>
+                    <field name="machinery_id"/>
                     <field name="fecha"/>
                     <field name="coste" sum="Total coste"/>
                     <field name="lectura"/>
@@ -37,6 +38,7 @@
                     <field name="task_id"/>
                     <field name="tipo_labor_id"/>
                     <field name="tipo_repostaje_id"/>
+                    <field name="product_id"/>
                 </tree>
             </field>
         </record>
@@ -46,7 +48,7 @@
             <field name="model">agro.machine.repostaje</field>
             <field name="arch" type="xml">
                 <graph string="Repostajes" type="bar">
-                    <field name="machine_id"/>
+                    <field name="machinery_id"/>
                     <field name="coste" operator="+"/>
                 </graph>
             </field>
@@ -57,13 +59,13 @@
             <field name="model">agro.machine.repostaje</field>
             <field name="arch" type="xml">
                <search string="Repostaje Maquinas">
-                    <field name="machine_id"/>
+                    <field name="machinery_id"/>
                     <group expand="0" string="Group By...">
                         <filter string="Maquina" 
-                                name="group_machine_id" 
+                                name="group_machinery_id" 
                                 icon="terp-personal" 
                                 domain="[]"  
-                                context="{'group_by':'machine_id'}"/>
+                                context="{'group_by':'machinery_id'}"/>
                         <filter string="Responsable" 
                                 name="group_responsable_id" 
                                 icon="terp-personal" 
@@ -94,6 +96,11 @@
                                 icon="terp-personal" 
                                 domain="[]"  
                                 context="{'group_by':'tipo_repostaje_id'}"/>
+                        <filter string="Producto"
+                                name="group_product_id"
+                                icon="terp-personal"
+                                domain="[]"
+                                context="{'group_by':'product_id'}"/>
                         </group>
                 </search>
             </field>

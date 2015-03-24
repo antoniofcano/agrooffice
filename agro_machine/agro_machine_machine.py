@@ -19,22 +19,23 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+from openerp import api
 from openerp.osv import osv, fields
 from openerp.tools.translate import _
 
 class agro_machine_machine(osv.osv):
-    _name = 'agro.machine.machine'
-    _description = 'Maquinaria'
+    _inherit = 'machinery'
 
-    def repostaje_open(self, cr, uid, ids, context=None):
+    @api.one
+    def repostaje_open(self):
         mod_obj = self.pool.get('ir.model.data')
         act_obj = self.pool.get('ir.actions.act_window')
 
-        result = mod_obj.get_object_reference(cr, uid, 'agro_machine', 'act_agro_machine_repostaje')
+        result = mod_obj.get_object_reference(self.env.cr, self.env.uid, 'agro_machine', 'act_agro_machine_repostaje')
         id = result and result[1] or False
-        result = act_obj.read(cr, uid, [id], context=context)[0]
+        result = act_obj.read(self.env.cr, self.env.uid, [id], context=self.env.context)[0]
         rep_ids = []
-        for machine in self.browse(cr, uid, ids, context=context):
+        for machine in self.browse(self.env.cr, self.env.uid, self.env.ids, context=self.env.context):
             rep_ids+= [repostaje.id for repostaje in machine.repostaje_ids]
         if not rep_ids:
             result['domain'] = "[('id', 'in', [])]"
@@ -59,23 +60,14 @@ class agro_machine_machine(osv.osv):
         return result
 
     _columns={
-        'name': fields.char('Maquina', size=128, required = True),
-        'marca': fields.many2one('agro.machine.marca', 'Marca'),
-        'modelo': fields.char('Modelo', size=128),
-        'matricula': fields.char('Matricula', size=10),
-        'num_bastidor': fields.char('Bastidor', size=128, required = True),
-        'tipo_maquina_id': fields.many2one('agro.machine.tipo', 'Tipo de maquina'),
-        'titular_id': fields.many2one('res.partner', 'Titular'), 
         'explotacion_id': fields.many2one('agro.project.explotacion', 'Explotacion asociada'),
-        'service_ids': fields.one2many('agro.machine.service', 'machine_id', 'Servicio y mantenimiento'),
-        'repostaje_ids': fields.one2many('agro.machine.repostaje', 'machine_id', 'Repostaje'),
-        'order_id': fields.many2one('purchase.order', 'Orden de compra'),
-        'garantia': fields.date('Fecha fin de garantia', ),
-        'machine_ids': fields.many2many(
-            'agro.machine.machine',
-            'agro_machine_machine_kit',
-            'machine_kit_id',
-            'machine_id',
+        'service_ids': fields.one2many('agro.machine.service', 'machinery_id', 'Servicio y mantenimiento'),
+        'repostaje_ids': fields.one2many('agro.machine.repostaje', 'machinery_id', 'Repostaje'),
+        'machinery_ids': fields.many2many(
+            'machinery',
+            'agro_machinery_machinery_kit',
+            'machinery_kit_id',
+            'machinery_id',
             'Kit'),
     }
 agro_machine_machine()
@@ -101,10 +93,10 @@ agro_machine_tipo()
 class agro_machine_service(osv.osv):
     _name = 'agro.machine.service'
     _description = 'Mantenimiento y Averias'
-    _rec_name = 'machine_id'
+    _rec_name = 'machinery_id'
 
     _columns={
-        'machine_id': fields.many2one('agro.machine.machine', 'Maquina', required = True),
+        'machinery_id': fields.many2one('machinery', 'Maquina', ),
         'descripcion': fields.char('Descripcion', size=128),
         'fecha': fields.date('Fecha', required = True),
         'lectura': fields.float('Kms/Horas/...'),
@@ -131,10 +123,10 @@ agro_machine_service_tipo()
 class agro_machine_repostaje(osv.osv):
     _name = 'agro.machine.repostaje'
     _description = 'Repostaje'
-    _rec_name = 'machine_id'
+    _rec_name = 'machinery_id'
 
     _columns={
-        'machine_id': fields.many2one('agro.machine.machine', 'Maquina', required = True),
+        'machinery_id': fields.many2one('machinery', 'Maquina', ),
         'fecha': fields.date('Fecha', required = True),
         'lectura': fields.float('Kms/Horas/...'),
         'coste': fields.float('Coste', required = True),
@@ -150,6 +142,7 @@ class agro_machine_repostaje(osv.osv):
             string="Tipo de Labor",
             store=True),
         'tipo_repostaje_id': fields.many2one('agro.machine.repostaje.tipo', 'Tipo de repostaje'),
+        'product_id': fields.many2one('product.product', 'Producto'),
         'responsable_id': fields.many2one('res.users', 'Responsable', required = True),
         'order_id': fields.many2one('purchase.order', 'Orden de compra'),
     }

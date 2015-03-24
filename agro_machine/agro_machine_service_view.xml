@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
             	<form string="Mantenimiento Maquina">
             		<group colspan="4" col="2">
-                                <field name="machine_id"/>
+                                <field name="machinery_id"/>
                                 <field name="descripcion"/>
                                 <field name="fecha"/>
                                 <field name="lectura"/>
@@ -29,7 +29,7 @@
             <field name="model">agro.machine.service</field>
             <field name="arch" type="xml">
                 <tree string="Mantenimiento Maquinas">
-                    <field name="machine_id"/>
+                    <field name="machinery_id"/>
                     <field name="fecha"/>
                     <field name="coste" sum="Total coste"/>
                     <field name="lectura"/>
@@ -47,7 +47,7 @@
             <field name="model">agro.machine.service</field>
             <field name="arch" type="xml">
                 <graph string="Servicios" type="bar">
-                    <field name="machine_id"/>
+                    <field name="machinery_id"/>
                     <field name="coste" operator="+"/>
                 </graph>
             </field>
@@ -58,15 +58,15 @@
             <field name="model">agro.machine.service</field>
             <field name="arch" type="xml">
                <search string="Mantenimiento Maquinas">
-                    <field name="machine_id"/>
+                    <field name="machinery_id"/>
                     <field name="descripcion"/>
                     <field name="service_tipo_id"/>
                     <group expand="0" string="Group By...">
                         <filter string="Maquina" 
-                                name="group_machine_id" 
+                                name="group_machinery_id" 
                                 icon="terp-personal" 
                                 domain="[]"  
-                                context="{'group_by':'machine_id'}"/>
+                                context="{'group_by':'machinery_id'}"/>
                         <filter string="Tipo averia" 
                                 name="group_service_tipo_id" 
                                 icon="terp-personal" 
