@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_agro_hr_timesheet_line_graph">
+            <field name="name">agro.analytic.timesheet.graph</field>
+            <field name="model">hr.analytic.timesheet</field>
+            <field name="arch" type="xml">
+                <graph string="Timesheet Activities" type="pivot">
+                    <field name="user_id"/>
+                    <field name="unit_amount" operator="+"/>
+                    <field name="amount" operator="+"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="agro_act_hr_timesheet_line_evry1_all_form" model="ir.actions.act_window">
+            <field name="name">Timesheet Activities</field>
+            <field name="model">hr.analytic.timesheet</field>
+            <field name="inherit_id" ref="hr_timesheet.act_hr_timesheet_line_evry1_all_form"/>
+
+            <field name="arch" type="xml">
+                <field name="view_mode" position="replace">tree,form,graph</field>
+            </field>
+       </record>
+
+        <!-- MENU -->
+        <menuitem id="menu_agro_project_pesada"
+                  name="Analisis Actividades"
+                  parent="agro_base.menu_agro_work_management"
+                  action="agro_act_hr_timesheet_line_evry1_all_form"/>
+
+   </data>
+</openerp>

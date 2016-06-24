@@ -42,6 +42,7 @@ Vertical Human Resources management for a Farm company
         'security/ir.model.access.csv',
         'agro_hr_edu_view.xml',
         'agro_hr_advance_view.xml',
+        'agro_hr_timesheet_view.xml',
     ],
     'installable': True,
     'auto_install': False,
