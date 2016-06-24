@@ -19,8 +19,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from osv import osv, fields
-from tools.translate import _
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
 import time
 import datetime
 
@@ -64,6 +64,14 @@ class agro_project_pesada(osv.osv):
 
         return vals
 
+    def _calc_kilos_aceite(self, cr, uid, ids, fields_list, args, context=None):
+        vals = {}
+
+        for pesada in ids:
+            pesada_data = self.browse(cr, uid, pesada, context)
+            vals[pesada] = float(pesada_data.kilos) * float(pesada_data.rendimiento) / 100
+
+        return vals
 
     _columns={
             'name': fields.integer('Num. de pesada', required = True),
@@ -71,9 +79,12 @@ class agro_project_pesada(osv.osv):
             'tarea_id': fields.many2one('project.task', 'Tarea', required = True),
             'fecha_recoleccion': fields.date('Fecha recoleccion', select='1', required= True),
             'fecha_pesada': fields.date('Fecha pesada', select='1', required= True),
+            'calidad': fields.selection([(1,'Vuelo'),(2,'Suelo'), (3,'Otra')], 'Calidad'),
             'kilos': fields.float('Kilos', required = True),
             'suciedad': fields.integer('Suciedad (%)'),
             'rendimiento': fields.float('Rendimiento'),
+            'acidez': fields.float('Acidez'),
+            'kilos_aceite': fields.function( _calc_kilos_aceite, method=True, store=True, type='float', string='Kilos aceite'),
             'horas': fields.function( _calc_task_hours, method=True, store=True, type='float', string='Horas'),
             'horas_kilo': fields.function( _calc_hours_kilo, method=True, store=True, type='float', string='Horas/Kilo'),
               }
@@ -83,6 +94,7 @@ class agro_project_pesada(osv.osv):
             'fecha_pesada': lambda *a: time.strftime('%Y-%m-%d %H:%M:%S'),
             'rendimiento': 0,
             'kilos': 0,
+            'calidad': 1,
     }
 
 agro_project_pesada()

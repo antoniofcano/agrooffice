@@ -13,8 +13,11 @@
                                 <field name="fecha_recoleccion"/>
                       		<field name="fecha_pesada"/>
                                 <field name="kilos"/>
+                                <field name="calidad"/>
                                 <field name="suciedad"/>
                                 <field name="rendimiento"/>
+                                <field name="acidez"/>
+                                <field name="kilos_aceite"/>
     			</group>
                 </form>
             </field>
@@ -34,6 +37,9 @@
                     <field name="rendimiento"/>
                     <field name="horas"/>
                     <field name="horas_kilo"/>
+                    <field name="acidez"/>
+                    <field name="kilos_aceite"/>
+                    <field name="calidad"/>
                     <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_card oe_kanban_project oe_kanban_global_click">
@@ -47,8 +53,11 @@
                                         <li>Campaña: <field name="campana_id"/></li>
                                         <li>Fecha de pesada: <field name="fecha_pesada"/></li>
                                         <li>Kilos: <field name="kilos"/></li>
+                                        <li>Calidad: <field name="calidad"/></li>
                                         <li>Suciedad: <field name="suciedad"/></li>
-                                        <li>Rendimiento graso: <field name="rendimiento"/></li>
+                                        <li>Rendimiento Ind.: <field name="rendimiento"/></li>
+                                        <li>Kilos aceite: <field name="kilos_aceite"/></li>
+                                        <li>Acidez: <field name="acidez"/></li>
                                         <li>Horas: <field name="horas"/></li>
                                         <li>Horas/Kilo: <field name="horas_kilo"/></li>
                                     </ul>
@@ -72,8 +81,11 @@
                     <field name="fecha_recoleccion"/>
                     <field name="fecha_pesada"/>
                     <field name="kilos" sum="Total kilos"/>
+                    <field name="calidad"/>
                     <field name="suciedad" avg="Suciedad media"/>
                     <field name="rendimiento" avg="Rendimiento medio"/>
+                    <field name="acidez"/>
+                    <field name="kilos_aceite"/>
                     <field name="horas" sum="Total horas"/>
                     <field name="horas_kilo" avg="Media recoleccion"/>
                 </tree>
@@ -90,12 +102,20 @@
                     <field name="tarea_id"/>
                     <field name="fecha_recoleccion"/>
                     <field name="fecha_pesada"/>
+                    <field name="acidez"/>
+                    <field name="kilos_aceite"/>
+                    <field name="calidad"/>
                     <group expand="0" string="Group By...">
                         <filter string="Campana" 
                                 name="group_campana_id" 
                                 icon="terp-personal" 
                                 domain="[]"  
                                 context="{'group_by':'campana_id'}"/>
+                        <filter string="Calidad"
+                                name="group_calidad"
+                                icon="terp-personal"
+                                domain="[]"
+                                context="{'group_by':'calidad'}"/>
                     </group>
                 </search>
             </field>

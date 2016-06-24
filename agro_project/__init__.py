@@ -25,3 +25,4 @@
 import agro_project_project
 import agro_project_explotacion
 import agro_project_weather
+import agro_project_pesada
