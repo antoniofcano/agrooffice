@@ -88,6 +88,7 @@
                     <field name="fecha_inicio"/>
                     <field name="fecha_fin"/>
                     <field name="responsable_id"/>
+                    <field name="camapana_id"/>
                     <group expand="0" string="Group By...">
                         <filter string="Explotacion" 
                                 name="group_explotacion_id" 
