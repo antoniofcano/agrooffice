@@ -20,6 +20,7 @@
                                 <field name="explotacion_id"/>
                                 <field name="campana_id" domain="[('explotacion_id', '=', explotacion_id)]"/>
                                 <field name="producto_id"/>
+                                <field name="analisis_id"/>
                                 <field name="plaga_ids"/>
                                 <field name="tipo_tratamiento_id"/>
                                 <field name="fecha_inicio"/>

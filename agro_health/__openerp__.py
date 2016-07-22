@@ -47,6 +47,7 @@ Vertical Project management for a Farm company
         'agro_health_tratamiento_view.xml',
         'agro_health_tipo_tratamiento_view.xml',
         'agro_health_tipo_aplicacion_view.xml',
+        'agro_health_analisis_view.xml',
     ],
     'installable': True,
     'auto_install': False,

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	<record model="ir.ui.view" id="agro_health_analisis_form_view">
+            <field name="name">agro.health.analisis.form.view</field>
+            <field name="model">agro.health.analisis</field>
+            <field name="arch" type="xml">
+            	<form string="analisis">
+            		<group colspan="4" col="2">
+                                <field name="name"/>
+                                <field name="explotacion_id"/>
+                                <field name="lab_id"/>
+                                <field name="fecha_muestra"/>
+                                <field name="fecha_resultados"/>
+                                <field name="tipo_id"/>
+                                <field name="product_id"/>
+                                <field name="observaciones"/>
+                                <field name="responsable_id"/>
+    			</group>
+                </form>
+            </field>
+         </record>                  
+
+        <record id="view_agro_health_analisis" model="ir.ui.view">
+            <field name="name">agro.health.analisis.tree</field>
+            <field name="model">agro.health.analisis</field>
+            <field name="arch" type="xml">
+                <tree string="Analisis">
+                    <field name="name"/>
+                    <field name="explotacion_id"/>
+                    <field name="lab_id"/>
+                    <field name="fecha_muestra"/>
+                    <field name="fecha_resultados"/>
+                    <field name="tipo_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_agro_health_analisis_search_form" model="ir.ui.view">
+            <field name="name">agro.health.analisis.search.form</field>
+            <field name="model">agro.health.analisis</field>
+            <field name="arch" type="xml">
+               <search string="Analisis">
+                    <field name="name"/>
+                    <field name="explotacion_id"/>
+                    <field name="lab_id"/>
+                    <field name="tipo_id"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Explotacion"
+                                name="group_explotacion_id"
+                                icon="terp-personal"
+                                domain="[]"
+                                context="{'group_by':'explotacion_id'}"/>
+                        <filter string="Laboratorio"
+                                name="group_lab_id"
+                                icon="terp-personal"
+                                domain="[]"
+                                context="{'group_by':'lab_id'}"/>
+                        <filter string="Tipo"
+                                name="group_tipo_id"
+                                icon="terp-personal"
+                                domain="[]"
+                                context="{'group_by':'tipo_id'}"/>
+                        </group>
+                </search>
+            </field>
+        </record>
+
+     <!-- ACCION -->
+	<record id="act_agro_health_analisis" model="ir.actions.act_window">
+	    <field name="name">analisis</field>
+	    <field name="res_model">agro.health.analisis</field>
+	    <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_agro_health_analisis_search_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new Analisis.
+              </p><p>
+                OpenERP's agro analisis health management...
+              </p>
+            </field>
+	</record>
+		
+
+	<!-- MENU -->
+	<menuitem id="menu_agro_health_analisis" 
+                  name="Analisis"
+                  parent="agro_base.menu_agro_config"
+                  action="act_agro_health_analisis"/>
+	</data>
+</openerp>
