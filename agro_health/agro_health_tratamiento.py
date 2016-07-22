@@ -80,19 +80,6 @@ class agro_health_tratamiento(osv.osv):
 
 agro_health_tratamiento()
 
-class agro_health_tratamiento_dosis(osv.osv):
-    _name = 'agro.health.tratamiento.dosis'
-    _description = 'Tratamiento dosis'
-
-    _columns={
-        'tratamiento_id': fields.many2one('agro.health.tratamiento', 'Tratamiento'),
-        'product_id': fields.many2one('agro.health.product', 'Producto'),
-        'dosis': fields.float('Dosis'),
-        'cantidad': fields.float('Cantidad total'),
-        'litros': fields.float('Litros de agua'),
-    }
-agro_health_tratamiento_dosis()
-
 class agro_health_tipo_tratamiento(osv.osv):
     _name = 'agro.health.tipo.tratamiento'
     _description = 'Tipo de tratamiento'
