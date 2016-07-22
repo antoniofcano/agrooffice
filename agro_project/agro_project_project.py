@@ -19,7 +19,11 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+from openerp import api
 from openerp.osv import osv, fields
+from datetime import date
+from dateutil import parser
+
 
 class agro_project_project(osv.osv):    
     _inherit = 'project.project'
@@ -31,8 +35,25 @@ class agro_project_project(osv.osv):
 
 agro_project_project()
 
+
 class agro_project_task(osv.osv):
     _inherit = 'project.task'
+
+    @api.one
+    def weather_open(self):
+        mod_obj = self.pool.get('ir.model.data')
+        act_obj = self.pool.get('ir.actions.act_window')
+
+        result = mod_obj.get_object_reference(self.env.cr, self.env.uid, 'agro_project', 'act_agro_project_weather')
+        id = result and result[1] or False
+        result = act_obj.read(self.env.cr, self.env.uid, [id], context=self.env.context)[0]
+
+        start_date = self.date_start
+        end_date = self.date_end
+
+        #result['domain'] = "[('fecha','&gt;', '%s'), ('fecha','&lt;', '%s')]" % (start_date, end_date)
+
+        return result
 
     _columns={
             'tipo_labor_id': fields.many2one('agro.project.tipo.labor', 'Tipo de labor'),

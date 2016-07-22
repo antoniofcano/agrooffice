@@ -6,8 +6,20 @@
             <field name="model">project.task</field>
             <field name="inherit_id" ref="project.view_task_form2"/>
             <field name="arch" type="xml">
+                    <xpath expr="//sheet/h1" position="before">
+                       <div class="oe_right oe_button_box" name="buttons">
+                           <group>
+                                <button
+                                    class="oe_inline oe_stat_button"
+                                    type="object"
+                                    name="weather_open"
+                                    string="El Tiempo"
+                                    icon="fa-tasks"/>
+                            </group>
+                        </div>
+                    </xpath>
                     <xpath expr="//field[@name='categ_ids']" position="after">
-                        <field name="tipo_labor_id"/>
+                         <field name="tipo_labor_id"/>
                     </xpath>
             </field>
        </record>

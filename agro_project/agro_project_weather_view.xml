@@ -89,13 +89,13 @@
             <field name="name">agro.project.weather.graph</field>
             <field name="model">agro.project.weather</field>
             <field name="arch" type="xml">
-                <graph string="El Tiempo" type="bar">
-                    <field name="station"/>
-                    <field name="precip" operator="+"/>
-                    <field name="tmed"/>
-                    <field name="hum_med"/>
-                    <field name="vel_viento"/>
-                    <field name="eto"/>
+                <graph string="El Tiempo" type="pivot">
+                    <field name="fecha" type="row"/>
+                    <field name="precip" type="measure"/>
+                    <field name="tmed"  type="measure"/>
+                    <field name="hum_med"  type="measure"/>
+                    <field name="vel_viento"  type="measure"/>
+                    <field name="eto" type="measure"/>
                 </graph>
             </field>
         </record>
@@ -135,6 +135,9 @@
 	    <field name="name">Climatologia</field>
 	    <field name="res_model">agro.project.weather</field>
 	    <field name="view_mode">tree,graph</field>
+            <field name="context">{
+                'fecha': ['&gt;=', time.strftime('%Y-01-01')],
+            }</field>
             <field name="search_view_id" ref="view_agro_project_weather_search_form"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">

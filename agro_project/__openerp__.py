@@ -40,7 +40,7 @@ Vertical Project management for a Farm company
     """,
     'data': [
         'security/ir.model.access.csv',
-#        'agro_project_pesada_view.xml',
+        'agro_project_pesada_view.xml',
         'agro_project_variedad_view.xml',
         'agro_project_cultivo_view.xml',
         'agro_project_explotacion_view.xml',

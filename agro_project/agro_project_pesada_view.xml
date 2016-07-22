@@ -85,7 +85,7 @@
                     <field name="suciedad" avg="Suciedad media"/>
                     <field name="rendimiento" avg="Rendimiento medio"/>
                     <field name="acidez"/>
-                    <field name="kilos_aceite"/>
+                    <field name="kilos_aceite" sum="Total kilos aceite"/>
                     <field name="horas" sum="Total horas"/>
                     <field name="horas_kilo" avg="Media recoleccion"/>
                 </tree>
@@ -125,8 +125,8 @@
             <field name="name">agro.project.pesada.graph</field>
             <field name="model">agro.project.pesada</field>
             <field name="arch" type="xml">
-                <graph string="Pesadas" type="bar">
-                    <field name="fecha_pesada"/>
+                <graph string="Pesadas" type="pivot">
+                    <field name="campana_id"/>
                     <field name="kilos" operator="+"/>
                 </graph>
             </field>
