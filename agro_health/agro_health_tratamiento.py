@@ -48,6 +48,7 @@ class agro_health_tratamiento(osv.osv):
     
     _columns={
         'name': fields.char('Nombre', size=50, required = True),
+        'producto_id': fields.many2one('product.product', 'Producto'),
         'campana_id': fields.many2one('project.project', 'Campana', required = True),
         'plaga_ids': fields.many2many('agro.health.plaga', 'agro_tratamiento_plaga', 'tratamiento_id', 'plaga_id', 'Lista de plagas', required = True),
         'explotacion_id': fields.many2one('agro.project.explotacion', 'Explotacion', required = True),

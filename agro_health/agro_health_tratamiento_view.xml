@@ -19,6 +19,7 @@
             		<group colspan="4" col="2">
                                 <field name="explotacion_id"/>
                                 <field name="campana_id" domain="[('explotacion_id', '=', explotacion_id)]"/>
+                                <field name="producto_id"/>
                                 <field name="plaga_ids"/>
                                 <field name="tipo_tratamiento_id"/>
                                 <field name="fecha_inicio"/>
@@ -68,6 +69,7 @@
             <field name="arch" type="xml">
                <search string="Tratamientos">
                     <field name="name"/>
+                    <field name="producto_id"/>
                     <field name="explotacion_id"/>
                     <field name="fecha_inicio"/>
                     <field name="fecha_fin"/>
