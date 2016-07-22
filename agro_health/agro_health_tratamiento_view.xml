@@ -25,22 +25,6 @@
                                 <field name="fecha_fin"/>
                                 <field name="tipo_aplicacion_id"/>
                                 <field name="machine_id"/>
-                                <field name="dosis_ids" type="xml">
-                                    <form string="Dosis">
-                                        <field name='tratamiento_id'/>
-                                        <field name='product_id'/>
-                                               <!--  domain="[('materia_id.plaga.plaga_id' ,'=', parent.plaga_ids)]"/> -->
-                                        <field name='dosis'/>
-                                        <field name='cantidad'/>
-                                        <field name='litros'/>
-                                    </form>
-                                    <tree string="Dosis">
-                                        <field name='product_id'/>
-                                        <field name='dosis'/>
-                                        <field name='cantidad'/>
-                                        <field name='litros'/>
-                                    </tree>
-                                </field>
                                 <field name="task_ids" domain="[('project_id','=',campana_id)]"/>
                                 <field name="responsable_id"/>
                                 <field name="observaciones"/>
