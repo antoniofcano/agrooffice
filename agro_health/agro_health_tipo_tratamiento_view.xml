@@ -35,7 +35,7 @@
 
      <!-- ACCION -->
 	<record id="act_agro_health_tipo_tratamiento" model="ir.actions.act_window">
-	    <field name="name">Materias activas</field>
+	    <field name="name">Tipo de tratamiento</field>
 	    <field name="res_model">agro.health.tipo.tratamiento</field>
 	    <field name="view_mode">tree,form</field>
             <field name="search_view_id" ref="view_agro_health_tipo_tratamiento_search_form"/>
