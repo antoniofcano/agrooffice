@@ -42,8 +42,6 @@ Vertical Project management for a Farm company
     'data': [
         'security/ir.model.access.csv',
         'agro_health_plaga_view.xml',
-        'agro_health_product_view.xml',
-        'agro_health_activa_view.xml',
         'agro_health_tratamiento_view.xml',
         'agro_health_tipo_tratamiento_view.xml',
         'agro_health_tipo_aplicacion_view.xml',

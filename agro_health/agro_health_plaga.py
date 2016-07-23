@@ -32,33 +32,6 @@ class agro_health_plaga(osv.osv):
         'tipo': fields.selection([('0','Plaga'), ('1','Enfermedad')], 'Tipo'), 
         'cultivo_id': fields.many2one('agro.project.cultivo', 'Cultivo asociado'),
         'descripcion': fields.text('Descripcion',  ),
-        'activa': fields.many2many('agro.health.plaga', 'agro_plaga_activa', 'plaga_id', 'activa_id', 'Materia activa asociada'),
     }
     
 agro_health_plaga()
-
-
-class agro_health_activa(osv.osv):
-    _name = 'agro.health.activa'
-    _description = 'Materia Activa'
-
-    _columns={
-        'name': fields.char('Materia Activa', size=128, required = True),
-        'plaga': fields.many2many('agro.health.plaga', 'agro_plaga_activa', 'activa_id', 'plaga_id', 'Plagas asociada'),
-        'product_ids': fields.one2many('agro.health.product', 'materia_id', 'Productos'),
-    }
-
-agro_health_activa()
-
-class agro_health_product(osv.osv):
-    _name = 'agro.health.product'
-    _description = 'Producto fitosanitario'
-
-    _columns={
-        'name': fields.char('Nombre', size=128, required = True),
-        'num': fields.integer('N. Registro', required = True),
-        'titular': fields.char('Titular', size=128, required = True),
-        'materia_id': fields.many2one('agro.health.activa', 'Materia activa', required = True),
-        'product_id': fields.many2one('product.product', 'Producto comercial'),
-    }
-agro_health_product()

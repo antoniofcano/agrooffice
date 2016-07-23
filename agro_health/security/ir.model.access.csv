@@ -1,13 +1,9 @@
 id,name,model_id:id,group_id:id,perm_create,perm_unlink,perm_write,perm_read
-access_agro_health_activa_agro_manager,agro.health.activa,agro_health.model_agro_health_activa,agro_base.group_agro_manager,1,1,1,1
 access_agro_health_plagas_agro_manager,agro.health.plagas,agro_health.model_agro_health_plaga,agro_base.group_agro_manager,1,1,1,1
-access_agro_health_product_agro_manager,agro.health.product,agro_health.model_agro_health_product,agro_base.group_agro_manager,1,1,1,1
 access_agro_health_tipo_aplicacion_agro_manager,agro.health.tipo.aplicacion,agro_health.model_agro_health_tipo_aplicacion,agro_base.group_agro_manager,1,1,1,1
 access_agro_health_tipo_tratamiento_agro_manager,agro.health.tipo.tratamiento,agro_health.model_agro_health_tipo_tratamiento,agro_base.group_agro_manager,1,1,1,1
 access_agro_health_tratamiento_agro_manager,agro.health.tratamiento,agro_health.model_agro_health_tratamiento,agro_base.group_agro_manager,1,1,1,1
-access_agro_health_activa_agro_user,agro.health.activa,agro_health.model_agro_health_activa,agro_base.group_agro_user,0,0,0,1
 access_agro_health_plagas_agro_user,agro.health.plagas,agro_health.model_agro_health_plaga,agro_base.group_agro_user,0,0,0,1
-access_agro_health_product_agro_user,agro.health.product,agro_health.model_agro_health_product,agro_base.group_agro_user,0,0,0,1
 access_agro_health_tipo_aplicacion_agro_user,agro.health.tipo.aplicacion,agro_health.model_agro_health_tipo_aplicacion,agro_base.group_agro_user,0,0,0,1
 access_agro_health_tipo_tratamiento_agro_user,agro.health.tipo.tratamiento,agro_health.model_agro_health_tipo_tratamiento,agro_base.group_agro_user,0,0,0,1
 access_agro_health_tratamiento_agro_user,agro.health.tratamiento,agro_health.model_agro_health_tratamiento,agro_base.group_agro_user,0,0,0,1
