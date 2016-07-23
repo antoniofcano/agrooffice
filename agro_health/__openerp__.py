@@ -29,7 +29,7 @@
     'summary': 'Agriculture, Farms, Projects, Tasks, Health',
     'images': [],
     'depends': [
-        'agro_base', 'agro_project', 'agro_machine', 'mrp',
+        'agro_base', 'agro_project', 'fleet', 'mrp',
     ],
     'description': """
 Vertical Project management for a Farm company

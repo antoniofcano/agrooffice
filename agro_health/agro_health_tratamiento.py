@@ -57,7 +57,7 @@ class agro_health_tratamiento(osv.osv):
         'fecha_inicio': fields.date('Fecha inicio', required = True),
         'fecha_fin': fields.date('Fecha fin'),
         'tipo_aplicacion_id': fields.many2one('agro.health.tipo.aplicacion', 'Forma de aplicacion'),
-        'machine_id': fields.many2one('machinery', 'Maquina', ),
+        'vehicle_id': fields.many2one('fleet.vehicle', 'Vehiculo', ),
         'task_ids': fields.many2many('project.task', 'agro_tratamiento_task', 'tratamiento_id', 'task_id', 'Tareas asociadas', required = True),
         'responsable_id': fields.many2one('res.users', 'Responsable', required = True),
         'observaciones': fields.text('Observaciones'),

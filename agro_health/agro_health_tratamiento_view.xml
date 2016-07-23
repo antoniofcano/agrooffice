@@ -26,7 +26,7 @@
                                 <field name="fecha_inicio"/>
                                 <field name="fecha_fin"/>
                                 <field name="tipo_aplicacion_id"/>
-                                <field name="machine_id"/>
+                                <field name="vehicle_id"/>
                                 <field name="task_ids" domain="[('project_id','=',campana_id)]"/>
                                 <field name="responsable_id"/>
                                 <field name="observaciones"/>
