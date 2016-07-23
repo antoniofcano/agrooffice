@@ -12,7 +12,6 @@
                                 <field name="tipo"/>
                                 <field name="cultivo_id"/>
                                 <field name="descripcion"/>
-                                <field name="activa"/>
     			</group>
                 </form>
             </field>
