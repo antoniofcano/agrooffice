@@ -27,7 +27,7 @@
                                 </field>
                                 <field name="bombeo_id" type="xml">
                                     <tree string="Bombeo">
-                                        <field name='machine_id'/>
+                                        <field name='device_id'/>
                                     </tree>
                                 </field>
                                 <field name="fecha_inicio"/>

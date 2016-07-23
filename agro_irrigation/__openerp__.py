@@ -29,7 +29,7 @@
     'summary': 'Agriculture, Farms, Projects, Tasks, Irrigation',
     'images': [],
     'depends': [
-        'agro_base', 'agro_project',
+        'agro_base', 'agro_project', 'fleet',
     ],
     'description': """
 Vertical Project management for a Farm company

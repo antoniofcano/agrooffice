@@ -79,7 +79,7 @@ class agro_irrigation_toma(osv.osv):
         'huso': fields.char('Huso', size=8),
         'proyeccion': fields.char('Sistema de proyeccion', size=8),
         'embalse_id': fields.many2one('agro.irrigation.toma.embalse', 'Embalse'),
-        'contador_id': fields.many2one('agro.machine.machine', 'Contador', required = True),
+        'device_id': fields.many2one('fleet.vehicle', 'Contador', ),
         'precintado': fields.boolean('Contador precintado'),
 
     }
@@ -91,7 +91,7 @@ class agro_irrigation_toma_embalse(osv.osv):
 
     _columns={
         'name': fields.char('Nombre', size=64, required = True),
-        'machine_id': fields.many2one('agro.machine.machine', 'Dispositivo', required = True),
+        'device_id': fields.many2one('fleet.vehicle', 'Dispositivo', ),
         'volumen': fields.float('Volumen embasado [m3/%]'),
         'capacidad': fields.float('Capacidad [m3]'),  
     }
@@ -103,7 +103,7 @@ class agro_irrigation_bombeo(osv.osv):
 
     _columns={
         'name': fields.char('Nombre', size=64, required = True),
-        'machine_id': fields.many2one('agro.machine.machine', 'Dispositivo', required = True),
+        'device_id': fields.many2one('fleet.vehicle', 'Dispositivo', ),
         'potencia': fields.float('Potencia'),
         'caudal': fields.float('Caudal [L/s]'),
     }

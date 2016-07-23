@@ -8,7 +8,7 @@
             	<form string="Bombeo">
             		<group colspan="4" col="2">
                                 <field name="name"/>
-                                <field name="machine_id"/>
+                                <field name="device_id"/>
                                 <field name="potencia"/>
                                 <field name="caudal"/>
     			</group>
@@ -22,7 +22,7 @@
             <field name="arch" type="xml">
                 <tree string="Bombeos">
                     <field name="name"/>
-                    <field name="machine_id"/>
+                    <field name="device_id"/>
                 </tree>
             </field>
         </record>
@@ -33,7 +33,7 @@
             <field name="arch" type="xml">
                <search string="Bombeos">
                     <field name="name"/>
-                    <field name="machine_id"/>
+                    <field name="device_id"/>
                 </search>
             </field>
         </record>

@@ -13,7 +13,7 @@
                                 <field name="huso"/>
                                 <field name="proyeccion"/>
                                 <field name="embalse_id"/>
-                                <field name="contador_id"/>
+                                <field name="device_id"/>
                                 <field name="precintado"/>
     			</group>
                 </form>
@@ -31,7 +31,7 @@
                                 <field name="huso"/>
                                 <field name="proyeccion"/>
                                 <field name="embalse_id"/>
-                                <field name="contador_id"/>
+                                <field name="device_id"/>
                                 <field name="precintado"/>
                 </tree>
             </field>
