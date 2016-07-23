@@ -85,7 +85,7 @@
 	<!-- MENU -->
 	<menuitem id="menu_agro_health_analisis" 
                   name="Analisis"
-                  parent="agro_base.menu_agro_config"
+                  parent="agro_health.menu_agro_health_tratamiento"
                   action="act_agro_health_analisis"/>
 	</data>
 </openerp>
