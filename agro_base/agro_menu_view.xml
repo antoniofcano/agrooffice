@@ -47,6 +47,7 @@
      
 -->       
         <!-- Agro Compras -->
+<!--
         <menuitem name="Compras"
             id="agro_base.menu_main_agro_purchase"
             groups="group_agro_manager,group_agro_user"
@@ -59,6 +60,7 @@
             sequence="8"
             action="purchase.purchase_form_action"/>
 
+-->
 <!--
 -odoo8-
         <menuitem name="Productos" id="menu_agro_purchase_productos" 
@@ -67,13 +69,14 @@
             action="product.product_normal_action_puchased"/>
     
 -->
-      
+<!--   
         <menuitem name="Proveedores" id="menu_agro_purchase_proveedores" 
             parent="agro_base.menu_agro_purchase_management" 
             sequence="10"
             action="base.action_partner_supplier_form"/>
-            
+-->        
         <!-- Agro Ventas -->
+<!--
         <menuitem name="Ventas"
             id="agro_base.menu_main_agro_sale"
             groups="group_agro_manager,group_agro_user"
@@ -103,8 +106,9 @@
             parent="agro_base.menu_agro_sale_invoice" 
             sequence="10"
             action="account_analytic_analysis.action_hr_tree_invoiced_all"/>                    
-
-        <!-- Agro Contabilidad -->      
+-->
+        <!-- Agro Contabilidad -->     
+<!-- 
         <menuitem name="Contabilidad"
             id="agro_base.menu_main_agro_acc"
             groups="group_agro_manager,group_agro_user"
@@ -129,7 +133,9 @@
 
         
         <menuitem id="agro_base.menu_agro_acc_config" name="Configuracion" parent="agro_base.menu_main_agro_acc" sequence="1" groups="group_agro_manager"/>
+-->
         <!-- Configuracion: Cuentas , Diarios   groups="analytic.group_analytic_accounting"-->
+<!--
         <menuitem name="Cuentas analiticas" id="menu_agro_acc_config_journal_analytic" 
             parent="agro_base.menu_agro_acc_config" 
             sequence="10"
@@ -138,5 +144,6 @@
             parent="agro_base.menu_agro_acc_config" 
             sequence="10"
             action="account.action_account_analytic_journal_form"/>
+-->
     </data>
 </openerp>
