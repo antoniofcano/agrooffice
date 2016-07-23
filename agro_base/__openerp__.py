@@ -50,7 +50,6 @@ Set menu, groups, access and OpenERP for a Farm company processes
         'security/ir.model.access.csv',
         'agro_menu_view.xml',
         'agro_hr_view.xml',
-        'wizard/wizard_crea_parte_view.xml',
     ],
     'installable': True,
     'auto_install': False,

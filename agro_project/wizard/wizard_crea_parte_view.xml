@@ -34,7 +34,7 @@
 	<!-- MENU -->
 	<menuitem id="menu_crea_parte" 
                   name="Crear partes"
-                  parent="agro_base.menu_agro_work_management"
+                  parent="agro_project.menu_agro_project_explotacion"
                   action="act_wizard_crea_parte"/>
 	</data>
 </openerp>

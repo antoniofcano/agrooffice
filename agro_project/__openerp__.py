@@ -49,6 +49,7 @@ Vertical Project management for a Farm company
 #        'agro_res_parner_view.xml',
         'agro_project_parcela_view.xml',
         'agro_project_weather_view.xml',
+        'wizard/wizard_crea_parte_view.xml',
     ],
     'installable': True,
     'auto_install': False,
