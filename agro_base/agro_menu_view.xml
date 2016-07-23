@@ -10,16 +10,6 @@
         <menuitem id="agro_base.menu_agro_work_management" name="Trabajos" parent="agro_base.menu_main_agro_work" sequence="1"/>
         <menuitem id="agro_base.menu_agro_config" name="Configuracion" parent="agro_base.menu_main_agro_work" sequence="2"/>
 
-        <menuitem name="Fincas / Campanas" id="menu_agro_project_fincas" 
-            parent="agro_base.menu_agro_work_management" 
-            sequence="0"
-            action="project.open_view_project_all"/>
-
-        <menuitem name="Trabajos" id="menu_agro_project_trabajos" 
-            parent="agro_base.menu_agro_work_management" 
-            sequence="0"
-            action="project.action_view_task"/>
-
         <!-- Agro Empleados -->
  <!--
         <menuitem name="Empleados"

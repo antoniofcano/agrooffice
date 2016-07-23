@@ -11,5 +11,17 @@
                 </field>
             </field>
        </record>
+
+
+        <menuitem name="Fincas / Campanas" id="menu_agro_project_fincas"
+            parent="agro_project.menu_agro_project_explotacion"
+            sequence="0"
+            action="project.open_view_project_all"/>
+
+        <menuitem name="Trabajos" id="menu_agro_project_trabajos"
+            parent="agro_project.menu_agro_project_explotacion"
+            sequence="0"
+            action="project.action_view_task"/>
+
    </data>
 </openerp>
