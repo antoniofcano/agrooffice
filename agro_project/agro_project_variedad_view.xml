@@ -63,6 +63,7 @@
 	<menuitem id="menu_agro_project_variedad" 
                   name="Variedades"
                   parent="agro_base.menu_agro_config"
-                  action="act_agro_project_variedad"/>
+                  action="act_agro_project_variedad"
+                  groups="agro_base.group_agro_manager"/>
 	</data>
 </openerp>

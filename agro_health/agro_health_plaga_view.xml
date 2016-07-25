@@ -62,6 +62,7 @@
 	<menuitem id="menu_agro_health_plaga" 
                   name="Plagas"
                   parent="agro_base.menu_agro_config"
-                  action="act_agro_health_plaga"/>
+                  action="act_agro_health_plaga"
+                  groups="agro_base.group_agro_manager"/>
 	</data>
 </openerp>
