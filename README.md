@@ -1,11 +1,11 @@
 agrooffice
 ==========
 
-Desarrollo vertical sobre OpenERP v7, para la gestión de empresas agrarias:
+Desarrollo vertical en Odoo, para la gestión de empresas agrarias:
     - Gestión Agraria
       - Registro de explotaciones
       - Control de labores
-      - Maquinaria
+      - Flota y Maquinaria
       - Recolección
       - Riego
       - Salud Vegetal
@@ -16,5 +16,7 @@ Desarrollo vertical sobre OpenERP v7, para la gestión de empresas agrarias:
       - Contabilidad analítica
       - Gestión documental
       - Informes
+    - Configuración de menús, accesos, opciones, etc.
+    - Documentación
       
-El desarrollo se ha realizado a partir de las necesidades de una empresa familiar dedicada a la Olivicultura.
+El desarrollo realizado a partir de las necesidades de una empresa familiar dedicada a la Olivicultura.
