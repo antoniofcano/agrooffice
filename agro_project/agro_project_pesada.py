@@ -77,6 +77,7 @@ class agro_project_pesada(osv.osv):
             'name': fields.integer('Num. de pesada', required = True),
             'campana_id': fields.many2one('project.project', 'Campana', required = True),
             'tarea_id': fields.many2one('project.task', 'Tarea', required = True),
+            'cliente_id': fields.many2one('res.partner', 'Entregado en', ),
             'fecha_recoleccion': fields.date('Fecha recoleccion', select='1', required= True),
             'fecha_pesada': fields.date('Fecha pesada', select='1', required= True),
             'calidad': fields.selection([(1,'Vuelo'),(2,'Suelo'), (3,'Otra')], 'Calidad'),

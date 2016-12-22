@@ -10,6 +10,7 @@
                                 <field name="name"/>
                                 <field name="campana_id"/>
                                 <field name="tarea_id" domain="[('project_id','=',campana_id)]"/>
+                                <field name="cliente_id"/>
                                 <field name="fecha_recoleccion"/>
                       		<field name="fecha_pesada"/>
                                 <field name="kilos"/>
@@ -30,6 +31,7 @@
                 <kanban version="7.0" class="oe_background_grey">
                     <!--list of field to be loaded -->
                     <field name="name"/>
+                    <field name="cliente_id"/>
                     <field name="campana_id"/>
                     <field name="fecha_pesada"/>
                     <field name="kilos"/>
@@ -51,6 +53,7 @@
                                     </h4>
                                     <ul>
                                         <li>Campaña: <field name="campana_id"/></li>
+                                        <li>Entregado en: <field name="cliente_id"/></li>
                                         <li>Fecha de pesada: <field name="fecha_pesada"/></li>
                                         <li>Kilos: <field name="kilos"/></li>
                                         <li>Calidad: <field name="calidad"/></li>
@@ -77,6 +80,7 @@
                 <tree string="Pesadas">
                     <field name="name"/>
                     <field name="campana_id"/>
+                    <field name="cliente_id"/>
                     <field name="tarea_id"/>
                     <field name="fecha_recoleccion"/>
                     <field name="fecha_pesada"/>
@@ -99,6 +103,7 @@
                <search string="Pesadas">
                     <field name="name"/>
                     <field name="campana_id"/>
+                    <field name="cliente_id"/>
                     <field name="tarea_id"/>
                     <field name="fecha_recoleccion"/>
                     <field name="fecha_pesada"/>
@@ -111,6 +116,16 @@
                                 icon="terp-personal" 
                                 domain="[]"  
                                 context="{'group_by':'campana_id'}"/>
+                        <filter string="Cliente"
+                                name="group_cliente_id"
+                                icon="terp-personal"
+                                domain="[]"
+                                context="{'group_by':'cliente_id'}"/>
+                        <filter string="Tarea"
+                                name="group_tarea_id"
+                                icon="terp-personal"
+                                domain="[]"
+                                context="{'group_by':'tarea_id'}"/>
                         <filter string="Calidad"
                                 name="group_calidad"
                                 icon="terp-personal"
